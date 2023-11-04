@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\User\\Documents\\GitHub\\ProjetoInterdisciplinarIII\\PrototipoProjetoInterdisciplinar.csproj": {}
+    "C:\\Users\\User\\Documents\\GitHub\\MeuPi3\\PrototipoProjetoInterdisciplinar.csproj": {}
   },
   "projects": {
-    "C:\\Users\\User\\Documents\\GitHub\\ProjetoInterdisciplinarIII\\PrototipoProjetoInterdisciplinar.csproj": {
+    "C:\\Users\\User\\Documents\\GitHub\\MeuPi3\\PrototipoProjetoInterdisciplinar.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\Documents\\GitHub\\ProjetoInterdisciplinarIII\\PrototipoProjetoInterdisciplinar.csproj",
+        "projectUniqueName": "C:\\Users\\User\\Documents\\GitHub\\MeuPi3\\PrototipoProjetoInterdisciplinar.csproj",
         "projectName": "PrototipoProjetoInterdisciplinar",
-        "projectPath": "C:\\Users\\User\\Documents\\GitHub\\ProjetoInterdisciplinarIII\\PrototipoProjetoInterdisciplinar.csproj",
+        "projectPath": "C:\\Users\\User\\Documents\\GitHub\\MeuPi3\\PrototipoProjetoInterdisciplinar.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\Documents\\GitHub\\ProjetoInterdisciplinarIII\\obj\\",
+        "outputPath": "C:\\Users\\User\\Documents\\GitHub\\MeuPi3\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",

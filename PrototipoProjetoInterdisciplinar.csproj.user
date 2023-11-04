@@ -16,5 +16,14 @@
     <Compile Update="View\LoginView.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="View\Pagamentos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="View\Relatorios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="View\VagaView.cs">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
 </Project>

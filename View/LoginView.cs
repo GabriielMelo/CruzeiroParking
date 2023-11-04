@@ -35,12 +35,13 @@ namespace PrototipoProjetoInterdisciplinar.Views
             {
                 AutenticacaoModel autenticacao = new AutenticacaoModel();
 
-                autenticacao.definirDados(txtUsuario.Text.Trim(), txtSenha.Text.Trim());  
+                autenticacao.definirDados(txtUsuario.Text.Trim(), txtSenha.Text.Trim());
 
                 AutenticacaoController autenticar = new AutenticacaoController();
                 bool autenticacaoOk = autenticar.validarUsuario(autenticacao);
 
-                if (autenticacaoOk) {
+                if (autenticacaoOk)
+                {
                     MessageBox.Show("Conexão bem-sucedida!", "Acesso Autorizado!",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
@@ -48,19 +49,20 @@ namespace PrototipoProjetoInterdisciplinar.Views
                     inicio.MdiParent = HomeView.ActiveForm;
                     inicio.Show();
 
-                } else
+                }
+                else
                 {
-                    MessageBox.Show("Erro ao validar credenciais", "Atenção", 
+                    MessageBox.Show("Erro ao validar credenciais", "Atenção",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                     this.Limpar();
                     txtUsuario.Focus();
                     return;
-                   
+
                 }
 
 
             }
-            
+
         }
         public bool validarCampos()
         {
