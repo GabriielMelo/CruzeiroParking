@@ -10,10 +10,12 @@ namespace PrototipoProjetoInterdisciplinar.Model
     {
 
         public List<bool> DisponibilidadeVagas { get; set; }
+        public List<string> Buttons { get; set; }
 
         public VagaModel()
         {
             DisponibilidadeVagas = new List<bool>();
+            Buttons = new List<string>();   
         }
 
     }

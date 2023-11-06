@@ -94,6 +94,7 @@
             vaga20.TabIndex = 20;
             vaga20.Text = " ";
             vaga20.UseVisualStyleBackColor = false;
+            vaga20.Click += vaga20_Click;
             // 
             // vaga19
             // 
@@ -108,6 +109,7 @@
             vaga19.TabIndex = 19;
             vaga19.Text = " ";
             vaga19.UseVisualStyleBackColor = false;
+            vaga19.Click += vaga19_Click;
             // 
             // vaga18
             // 
@@ -122,6 +124,7 @@
             vaga18.TabIndex = 18;
             vaga18.Text = " ";
             vaga18.UseVisualStyleBackColor = false;
+            vaga18.Click += vaga18_Click;
             // 
             // vaga17
             // 
@@ -136,6 +139,7 @@
             vaga17.TabIndex = 17;
             vaga17.Text = " ";
             vaga17.UseVisualStyleBackColor = false;
+            vaga17.Click += vaga17_Click;
             // 
             // vaga16
             // 
@@ -149,6 +153,7 @@
             vaga16.Size = new Size(80, 66);
             vaga16.TabIndex = 16;
             vaga16.UseVisualStyleBackColor = false;
+            vaga16.Click += vaga16_Click;
             // 
             // vaga15
             // 
@@ -163,6 +168,7 @@
             vaga15.TabIndex = 15;
             vaga15.Text = " ";
             vaga15.UseVisualStyleBackColor = false;
+            vaga15.Click += vaga15_Click;
             // 
             // vaga14
             // 
@@ -177,6 +183,7 @@
             vaga14.TabIndex = 14;
             vaga14.Text = " ";
             vaga14.UseVisualStyleBackColor = false;
+            vaga14.Click += vaga14_Click;
             // 
             // vaga13
             // 
@@ -191,6 +198,7 @@
             vaga13.TabIndex = 13;
             vaga13.Text = " ";
             vaga13.UseVisualStyleBackColor = false;
+            vaga13.Click += vaga13_Click;
             // 
             // vaga12
             // 
@@ -205,6 +213,7 @@
             vaga12.TabIndex = 12;
             vaga12.Text = " ";
             vaga12.UseVisualStyleBackColor = false;
+            vaga12.Click += vaga12_Click;
             // 
             // vaga11
             // 
@@ -219,6 +228,7 @@
             vaga11.TabIndex = 11;
             vaga11.Text = " ";
             vaga11.UseVisualStyleBackColor = false;
+            vaga11.Click += vaga11_Click;
             // 
             // vaga10
             // 
@@ -233,6 +243,7 @@
             vaga10.TabIndex = 10;
             vaga10.Text = " ";
             vaga10.UseVisualStyleBackColor = false;
+            vaga10.Click += vaga10_Click;
             // 
             // vaga9
             // 
@@ -247,6 +258,7 @@
             vaga9.TabIndex = 9;
             vaga9.Text = " ";
             vaga9.UseVisualStyleBackColor = false;
+            vaga9.Click += vaga9_Click;
             // 
             // vaga8
             // 
@@ -261,6 +273,7 @@
             vaga8.TabIndex = 8;
             vaga8.Text = " ";
             vaga8.UseVisualStyleBackColor = false;
+            vaga8.Click += vaga8_Click;
             // 
             // vaga7
             // 
@@ -275,6 +288,7 @@
             vaga7.TabIndex = 7;
             vaga7.Text = " ";
             vaga7.UseVisualStyleBackColor = false;
+            vaga7.Click += vaga7_Click;
             // 
             // vaga6
             // 
@@ -289,6 +303,7 @@
             vaga6.TabIndex = 6;
             vaga6.Text = " ";
             vaga6.UseVisualStyleBackColor = false;
+            vaga6.Click += vaga6_Click;
             // 
             // vaga5
             // 
@@ -303,6 +318,7 @@
             vaga5.TabIndex = 5;
             vaga5.Text = " ";
             vaga5.UseVisualStyleBackColor = false;
+            vaga5.Click += vaga5_Click;
             // 
             // vaga4
             // 
@@ -317,6 +333,7 @@
             vaga4.TabIndex = 4;
             vaga4.Text = " ";
             vaga4.UseVisualStyleBackColor = false;
+            vaga4.Click += vaga4_Click;
             // 
             // vaga3
             // 
@@ -331,6 +348,7 @@
             vaga3.TabIndex = 3;
             vaga3.Text = " ";
             vaga3.UseVisualStyleBackColor = false;
+            vaga3.Click += vaga3_Click;
             // 
             // vaga2
             // 
@@ -345,6 +363,7 @@
             vaga2.TabIndex = 2;
             vaga2.Text = " ";
             vaga2.UseVisualStyleBackColor = false;
+            vaga2.Click += vaga2_Click;
             // 
             // vaga1
             // 
@@ -359,6 +378,7 @@
             vaga1.TabIndex = 1;
             vaga1.Text = " ";
             vaga1.UseVisualStyleBackColor = false;
+            vaga1.Click += vaga1_Click;
             // 
             // VagaView
             // 

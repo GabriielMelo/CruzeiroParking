@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using PrototipoProjetoInterdisciplinar.Controllers;
 using PrototipoProjetoInterdisciplinar.Model;
+using PrototipoProjetoInterdisciplinar.View; 
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -13,22 +14,25 @@ namespace PrototipoProjetoInterdisciplinar.Controller
     public class VagaController
     {
         private VagaModel vagaModel;
-
-        public VagaController()
+        private VagaView vagaView;
+        ConexaoBDModel conn = new ConexaoBDModel();
+        public VagaController(VagaView view)
         {
             vagaModel = new VagaModel();
+            vagaView = view; 
         }
-
-        public void AtualizarVagasDisponiveis()
+     
+       
+        public void consultarVagasDisponiveis()
         {
-            ConexaoBDModel conn = new ConexaoBDModel();
+            
             conn.Conectar();
 
             string sql = "SELECT disponivel FROM Vagas";
 
             using (MySqlConnection connection = conn.ObterConexao())
             {
-                connection.Open();
+                
                 using (MySqlCommand command = new MySqlCommand(sql, connection))
                 {
                     using (MySqlDataReader reader = command.ExecuteReader())
@@ -44,10 +48,75 @@ namespace PrototipoProjetoInterdisciplinar.Controller
             conn.FecharConexao();
         }
 
+        public bool ConfirmarReserva(int vagaID)
+        {
+            DialogResult result = MessageBox.Show("Deseja preencher esta vaga?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+
+                conn.Conectar();
+                string sql = "UPDATE Vagas SET disponivel = false WHERE id_vaga = @idVaga";
+                MySqlCommand command = new MySqlCommand(sql, conn.ObterConexao());
+                command.Parameters.AddWithValue("@idVaga", vagaID);
+                int atualizado = command.ExecuteNonQuery();
+
+                if (atualizado > 0)
+                {
+                    MessageBox.Show("Vaga atualizada com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Erro ao atualizar a vaga!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+
+        public void AtualizarInterfaceButtons()
+        {
+            vagaModel.Buttons = new List<string>
+    {
+        "vaga1", "vaga2", "vaga3", "vaga4", "vaga5",
+        "vaga6", "vaga7", "vaga8", "vaga9", "vaga10",
+        "vaga11", "vaga12", "vaga13", "vaga14", "vaga15",
+        "vaga16", "vaga17", "vaga18", "vaga19", "vaga20"
+    };
+
+            for (int i = 0; i < vagaModel.Buttons.Count; i++)
+            {
+                if (vagaModel.DisponibilidadeVagas.Count > i)
+                {
+                    string nomeBotao = vagaModel.Buttons[i];
+                    Control[] controles = vagaView.Controls.Find(nomeBotao, true);
+
+                    if (controles.Length > 0 && controles[0] is Button)
+                    {
+                        Button botao = (Button)controles[0];
+
+                        if (vagaModel.DisponibilidadeVagas[i])
+                        {
+                            botao.BackColor = Color.LimeGreen;
+                            botao.Enabled = true;
+                        }
+                        else
+                        {
+                            botao.BackColor = Color.Red;
+                            botao.Enabled = false;
+                        }
+                    }
+                }
+            }
+        }
+
         public VagaModel ObterVagaModel()
         {
             return vagaModel;
         }
-
     }
 }
