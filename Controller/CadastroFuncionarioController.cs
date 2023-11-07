@@ -20,7 +20,7 @@ namespace PrototipoProjetoInterdisciplinar.Controllers
             try
             {
                 conn.Conectar();
-                string sql = "INSERT INTO funcionario (nome,usuario,senha) VALUES (@nome,@usuario,@senha)";
+                string sql = "INSERT INTO funcionarios (nome,usuario,senha) VALUES (@nome,@usuario,@senha)";
 
                 MySqlCommand command = new MySqlCommand(sql, conn.ObterConexao());
 

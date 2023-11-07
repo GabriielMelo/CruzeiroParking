@@ -15,7 +15,7 @@ namespace PrototipoProjetoInterdisciplinar.Controller
     {
         private VagaModel vagaModel;
         private VagaView vagaView;
-        ConexaoBDModel conn = new ConexaoBDModel();
+        ConexaoBDModel conn = new();
         public VagaController(VagaView view)
         {
             vagaModel = new VagaModel();
@@ -23,7 +23,7 @@ namespace PrototipoProjetoInterdisciplinar.Controller
         }
      
        
-        public void consultarVagasDisponiveis()
+        public void ConsultarVagasDisponiveis()
         {
             
             conn.Conectar();
@@ -32,16 +32,14 @@ namespace PrototipoProjetoInterdisciplinar.Controller
 
             using (MySqlConnection connection = conn.ObterConexao())
             {
-                
-                using (MySqlCommand command = new MySqlCommand(sql, connection))
+
+                using MySqlCommand command = new(sql, connection);
+
+                using MySqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
                 {
-                    using (MySqlDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            vagaModel.DisponibilidadeVagas.Add(reader.GetBoolean(0));
-                        }
-                    }
+                    vagaModel.DisponibilidadeVagas.Add(reader.GetBoolean(0));
                 }
             }
 
@@ -50,14 +48,11 @@ namespace PrototipoProjetoInterdisciplinar.Controller
 
         public bool ConfirmarReserva(int vagaID)
         {
-            DialogResult result = MessageBox.Show("Deseja preencher esta vaga?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (result == DialogResult.Yes)
-            {
+            try { 
 
                 conn.Conectar();
                 string sql = "UPDATE Vagas SET disponivel = false WHERE id_vaga = @idVaga";
-                MySqlCommand command = new MySqlCommand(sql, conn.ObterConexao());
+                MySqlCommand command = new(sql, conn.ObterConexao());
                 command.Parameters.AddWithValue("@idVaga", vagaID);
                 int atualizado = command.ExecuteNonQuery();
 
@@ -70,11 +65,17 @@ namespace PrototipoProjetoInterdisciplinar.Controller
                     MessageBox.Show("Erro ao atualizar a vaga!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 return true;
-            }
-            else
+            } catch(Exception ex)
             {
+                MessageBox.Show("Erro ao atualizar a Vaga", ex.Message);
                 return false;
             }
+            finally
+            {
+                conn.FecharConexao(); 
+            }
+
+
 
         }
 

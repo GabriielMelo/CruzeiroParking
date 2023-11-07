@@ -1,4 +1,25 @@
 ﻿[*.cs]
 
 # IDE1006: Estilos de Nomenclatura
-dotnet_diagnostic.IDE1006.severity = warning
+dotnet_diagnostic.IDE1006.severity = none
+
+# CS8601: Possível atribuição de referência nula.
+dotnet_diagnostic.CS8601.severity = none
+
+# CS8603: Possível retorno de referência nula.
+dotnet_diagnostic.CS8603.severity = none
+
+# IDE0044: Adicionar modificador somente leitura
+dotnet_diagnostic.IDE0044.severity = none
+
+# IDE0038: Usar a correspondência de padrão
+dotnet_diagnostic.IDE0038.severity = none
+
+# IDE0052: Remover membros particulares não lidos
+dotnet_diagnostic.IDE0052.severity = none
+
+# IDE0090: Usar 'new(...)'
+dotnet_diagnostic.IDE0090.severity = none
+
+# IDE0017: Simplificar a inicialização de objeto
+dotnet_diagnostic.IDE0017.severity = none

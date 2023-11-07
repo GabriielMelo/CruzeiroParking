@@ -54,7 +54,7 @@ namespace PrototipoProjetoInterdisciplinar.Views
             {
                 return false;
             }
-            
+
         }
 
         private void btnCadastrar_Click(object sender, EventArgs e)
@@ -64,7 +64,7 @@ namespace PrototipoProjetoInterdisciplinar.Views
             {
 
                 FuncionarioModel funcionario = new FuncionarioModel();
-                funcionario.definirDados(txtNome.Text.Trim(),txtUsuario.Text.Trim(),txtSenha.Text.Trim());
+                funcionario.definirDados(txtNome.Text.Trim(), txtUsuario.Text.Trim(), txtSenha.Text.Trim());
 
                 CadastroFuncionarioController cdFuncionario = new CadastroFuncionarioController();
                 bool cadastroOk = cdFuncionario.cadastroFuncionario(funcionario);
@@ -72,14 +72,16 @@ namespace PrototipoProjetoInterdisciplinar.Views
                 {
                     MessageBox.Show("Funcionario cadastrado com sucesso!", "Cadastro Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Limpar();
-                } else
+                }
+                else
                 {
                     MessageBox.Show("Erro ao cadastrar Funcionario!", "Cadastro Não Ok", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     this.Limpar();
                     return;
                 }
 
-            } else
+            }
+            else
             {
                 MessageBox.Show("Preencha todos os campos corretamente!", "Atenção!",
                               MessageBoxButtons.OK, MessageBoxIcon.Error);

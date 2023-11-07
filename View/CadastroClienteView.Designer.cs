@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label2 = new Label();
             label4 = new Label();
             txtNome = new TextBox();
             txtDocumento = new TextBox();
@@ -44,24 +43,13 @@
             btnCadastroclt = new Button();
             SuspendLayout();
             // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.ForeColor = Color.Black;
-            label2.Location = new Point(31, 27);
-            label2.Name = "label2";
-            label2.Size = new Size(295, 28);
-            label2.TabIndex = 21;
-            label2.Text = "Cadastro de Clientes Mensalistas";
-            // 
             // label4
             // 
             label4.Anchor = AnchorStyles.None;
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             label4.ForeColor = Color.Black;
-            label4.Location = new Point(43, 129);
+            label4.Location = new Point(57, 98);
             label4.Name = "label4";
             label4.Size = new Size(167, 15);
             label4.TabIndex = 26;
@@ -71,7 +59,7 @@
             // 
             txtNome.Anchor = AnchorStyles.None;
             txtNome.BorderStyle = BorderStyle.None;
-            txtNome.Location = new Point(45, 125);
+            txtNome.Location = new Point(59, 94);
             txtNome.Name = "txtNome";
             txtNome.PlaceholderText = "Nome Completo";
             txtNome.Size = new Size(167, 16);
@@ -82,7 +70,7 @@
             // 
             txtDocumento.Anchor = AnchorStyles.None;
             txtDocumento.BorderStyle = BorderStyle.None;
-            txtDocumento.Location = new Point(45, 161);
+            txtDocumento.Location = new Point(59, 130);
             txtDocumento.Name = "txtDocumento";
             txtDocumento.PlaceholderText = "Documento";
             txtDocumento.Size = new Size(167, 16);
@@ -95,7 +83,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             label1.ForeColor = Color.Black;
-            label1.Location = new Point(43, 165);
+            label1.Location = new Point(57, 134);
             label1.Name = "label1";
             label1.Size = new Size(167, 15);
             label1.TabIndex = 28;
@@ -105,7 +93,7 @@
             // 
             txtEndereco.Anchor = AnchorStyles.None;
             txtEndereco.BorderStyle = BorderStyle.None;
-            txtEndereco.Location = new Point(45, 199);
+            txtEndereco.Location = new Point(59, 168);
             txtEndereco.Name = "txtEndereco";
             txtEndereco.PlaceholderText = "Endereço ";
             txtEndereco.Size = new Size(167, 16);
@@ -118,7 +106,7 @@
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             label3.ForeColor = Color.Black;
-            label3.Location = new Point(43, 203);
+            label3.Location = new Point(57, 172);
             label3.Name = "label3";
             label3.Size = new Size(167, 15);
             label3.TabIndex = 30;
@@ -128,7 +116,7 @@
             // 
             txtTelefone.Anchor = AnchorStyles.None;
             txtTelefone.BorderStyle = BorderStyle.None;
-            txtTelefone.Location = new Point(45, 239);
+            txtTelefone.Location = new Point(59, 208);
             txtTelefone.Name = "txtTelefone";
             txtTelefone.PlaceholderText = "Telefone";
             txtTelefone.Size = new Size(167, 16);
@@ -141,7 +129,7 @@
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             label5.ForeColor = Color.Black;
-            label5.Location = new Point(43, 243);
+            label5.Location = new Point(57, 212);
             label5.Name = "label5";
             label5.Size = new Size(167, 15);
             label5.TabIndex = 32;
@@ -151,7 +139,7 @@
             // 
             txtModeloCarro.Anchor = AnchorStyles.None;
             txtModeloCarro.BorderStyle = BorderStyle.None;
-            txtModeloCarro.Location = new Point(315, 126);
+            txtModeloCarro.Location = new Point(329, 95);
             txtModeloCarro.Name = "txtModeloCarro";
             txtModeloCarro.PlaceholderText = "Modelo do Carro";
             txtModeloCarro.Size = new Size(167, 16);
@@ -164,7 +152,7 @@
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             label6.ForeColor = Color.Black;
-            label6.Location = new Point(313, 130);
+            label6.Location = new Point(327, 99);
             label6.Name = "label6";
             label6.Size = new Size(167, 15);
             label6.TabIndex = 34;
@@ -174,7 +162,7 @@
             // 
             txtPlacaCarro.Anchor = AnchorStyles.None;
             txtPlacaCarro.BorderStyle = BorderStyle.None;
-            txtPlacaCarro.Location = new Point(315, 164);
+            txtPlacaCarro.Location = new Point(329, 133);
             txtPlacaCarro.Name = "txtPlacaCarro";
             txtPlacaCarro.PlaceholderText = "Placa do Carro";
             txtPlacaCarro.Size = new Size(167, 16);
@@ -187,7 +175,7 @@
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             label7.ForeColor = Color.Black;
-            label7.Location = new Point(313, 168);
+            label7.Location = new Point(327, 137);
             label7.Name = "label7";
             label7.Size = new Size(167, 15);
             label7.TabIndex = 36;
@@ -201,7 +189,7 @@
             btnCadastroclt.FlatStyle = FlatStyle.Popup;
             btnCadastroclt.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnCadastroclt.ForeColor = Color.White;
-            btnCadastroclt.Location = new Point(394, 232);
+            btnCadastroclt.Location = new Point(408, 201);
             btnCadastroclt.Name = "btnCadastroclt";
             btnCadastroclt.Size = new Size(88, 23);
             btnCadastroclt.TabIndex = 38;
@@ -228,7 +216,6 @@
             Controls.Add(label1);
             Controls.Add(txtNome);
             Controls.Add(label4);
-            Controls.Add(label2);
             FormBorderStyle = FormBorderStyle.None;
             Name = "CadastroClienteView";
             Text = "CadastroClienteView";
@@ -237,8 +224,6 @@
         }
 
         #endregion
-
-        private Label label2;
         private Label label4;
         private TextBox txtNome;
         private TextBox txtDocumento;

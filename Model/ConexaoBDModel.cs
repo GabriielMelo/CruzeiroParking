@@ -7,10 +7,9 @@ namespace PrototipoProjetoInterdisciplinar.Controllers
 {
     public class ConexaoBDModel
     {
-        private MySqlConnection mConn;
-        private MySqlDataAdapter mAdapter;
-        private DataSet mDataSet;
-
+        private MySqlConnection? mConn;
+        private DataSet? mDataSet;
+        // private MySqlDataAdapter mAdapter;
         public void Conectar()
 
         {

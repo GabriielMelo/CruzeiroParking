@@ -27,7 +27,7 @@ namespace PrototipoProjetoInterdisciplinar.Views
             txtModeloCarro.Clear();
             txtPlacaCarro.Clear();
         }
-        public bool validarCampos()
+        public bool ValidarCampos()
         {
             if (txtNome.Text.Trim() == String.Empty || txtDocumento.Text.Trim() == String.Empty ||
                txtEndereco.Text.Trim() == String.Empty || txtTelefone.Text.Trim() == String.Empty ||
@@ -46,7 +46,7 @@ namespace PrototipoProjetoInterdisciplinar.Views
         private void btnCadastroclt_Click(object sender, EventArgs e)
         {
 
-            if (this.validarCampos())
+            if (this.ValidarCampos())
             {
 
                 ClienteModel cliente = new ClienteModel();
@@ -55,7 +55,7 @@ namespace PrototipoProjetoInterdisciplinar.Views
                 txtTelefone.Text.Trim(), txtModeloCarro.Text.Trim(), txtPlacaCarro.Text.Trim());
 
                 CadastroClienteController cdCliente = new CadastroClienteController();
-                bool cadastroOK = cdCliente.cadastrarCliente(cliente);
+                bool cadastroOK = cdCliente.CadastrarCliente(cliente);
 
                 if (cadastroOK)
                 {
@@ -77,7 +77,7 @@ namespace PrototipoProjetoInterdisciplinar.Views
 
         }
 
-        
+
         private void txtNome_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13)
@@ -118,7 +118,7 @@ namespace PrototipoProjetoInterdisciplinar.Views
 
         private void txtPlacaCarro_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if(e.KeyChar == 13)
+            if (e.KeyChar == 13)
             {
                 btnCadastroclt.Focus();
             }

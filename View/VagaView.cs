@@ -2,6 +2,7 @@
 using PrototipoProjetoInterdisciplinar.Controller;
 using PrototipoProjetoInterdisciplinar.Controllers;
 using PrototipoProjetoInterdisciplinar.Model;
+using PrototipoProjetoInterdisciplinar.Views;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,197 +22,352 @@ namespace PrototipoProjetoInterdisciplinar.View
         {
             InitializeComponent();
             VagaController vagas = new VagaController(this);
-            vagas.consultarVagasDisponiveis();
+            vagas.ConsultarVagasDisponiveis();
             vagas.AtualizarInterfaceButtons();
 
         }
 
 
-        private void vaga1_Click(object sender, EventArgs e)
-        {
-            VagaController vagas = new VagaController(this);
-            bool vagaok = vagas.ConfirmarReserva(1);
-            if (vagaok)
+            private void vaga1_Click(object sender, EventArgs e)
             {
-                vagas.AtualizarInterfaceButtons();
-                vaga1.BackColor = Color.Red;
-                vaga1.Enabled = false;
-            } else
+                DialogResult result = MessageBox.Show("Cliente possui Cadastro?", "Confirmação",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if(result == DialogResult.Yes)
+                {
+                    string nomeCadastrado = Microsoft.VisualBasic.Interaction.InputBox("Digite o nome do cliente:", "Nome do Cliente");
+                    if(nomeCadastrado != null)
+                    {
+                        CadastroClienteController cdCliente = new CadastroClienteController();
+                        bool clienteEncontrado = cdCliente.BuscarCliente(nomeCadastrado);
+                    if (clienteEncontrado)
+                    {
+                        VagaController vagas = new VagaController(this);
+                        bool vagaok = vagas.ConfirmarReserva(1);
+                        if (vagaok)
+                        {
+                            vagas.AtualizarInterfaceButtons();
+                            vaga1.BackColor = Color.Red;
+                            vaga1.Enabled = false;
+                        }
+                        else
+                        {
+                            vagas.AtualizarInterfaceButtons();
+                        }
+                    }
+                    
+
+                    } 
+                
+                } else
             {
-                vagas.AtualizarInterfaceButtons();
+                MessageBox.Show("Efetue o cadastro do cliente para prosseguir", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             
-        }
+            
+            }
 
         private void vaga2_Click(object sender, EventArgs e)
         {
             VagaController vagas = new VagaController(this);
-            vagas.ConfirmarReserva(2);
-            vagas.AtualizarInterfaceButtons();
-            vaga2.BackColor = Color.Red;
-            vaga2.Enabled = false;
+            bool vagaok = vagas.ConfirmarReserva(2);
+            if (vagaok)
+            {
+                vagas.AtualizarInterfaceButtons();
+                vaga2.BackColor = Color.Red;
+                vaga2.Enabled = false;
+            }
+            else
+            {
+                vagas.AtualizarInterfaceButtons();
+            }
         }
 
         private void vaga3_Click(object sender, EventArgs e)
         {
             VagaController vagas = new VagaController(this);
-            vagas.ConfirmarReserva(3);
-            vagas.AtualizarInterfaceButtons();
-            vaga3.BackColor = Color.Red;
-            vaga3.Enabled = false;
+            bool vagaok = vagas.ConfirmarReserva(3);
+            if (vagaok)
+            {
+                vagas.AtualizarInterfaceButtons();
+                vaga3.BackColor = Color.Red;
+                vaga3.Enabled = false;
+            }
+            else
+            {
+                vagas.AtualizarInterfaceButtons();
+            }
         }
 
         private void vaga4_Click(object sender, EventArgs e)
         {
             VagaController vagas = new VagaController(this);
-            vagas.ConfirmarReserva(4);
-            vagas.AtualizarInterfaceButtons();
-            vaga4.BackColor = Color.Red;
-            vaga4.Enabled = false;
+            bool vagaok = vagas.ConfirmarReserva(4);
+            if (vagaok)
+            {
+                vagas.AtualizarInterfaceButtons();
+                vaga4.BackColor = Color.Red;
+                vaga4.Enabled = false;
+            }
+            else
+            {
+                vagas.AtualizarInterfaceButtons();
+            }
         }
 
         private void vaga5_Click(object sender, EventArgs e)
         {
             VagaController vagas = new VagaController(this);
-            vagas.ConfirmarReserva(5);
-            vagas.AtualizarInterfaceButtons();
-            vaga5.BackColor = Color.Red;
-            vaga5.Enabled = false;
+            bool vagaok = vagas.ConfirmarReserva(5);
+            if (vagaok)
+            {
+                vagas.AtualizarInterfaceButtons();
+                vaga5.BackColor = Color.Red;
+                vaga5.Enabled = false;
+            }
+            else
+            {
+                vagas.AtualizarInterfaceButtons();
+            }
         }
 
         private void vaga6_Click(object sender, EventArgs e)
         {
             VagaController vagas = new VagaController(this);
-            vagas.ConfirmarReserva(6);
-            vagas.AtualizarInterfaceButtons();
-            vaga6.BackColor = Color.Red;
-            vaga6.Enabled = false;
+            bool vagaok = vagas.ConfirmarReserva(6);
+            if (vagaok)
+            {
+                vagas.AtualizarInterfaceButtons();
+                vaga6.BackColor = Color.Red;
+                vaga6.Enabled = false;
+            }
+            else
+            {
+                vagas.AtualizarInterfaceButtons();
+            }
         }
 
         private void vaga7_Click(object sender, EventArgs e)
         {
             VagaController vagas = new VagaController(this);
-            vagas.ConfirmarReserva(7);
-            vagas.AtualizarInterfaceButtons();
-            vaga7.BackColor = Color.Red;
-            vaga7.Enabled = false;
+            bool vagaok = vagas.ConfirmarReserva(7);
+            if (vagaok)
+            {
+                vagas.AtualizarInterfaceButtons();
+                vaga7.BackColor = Color.Red;
+                vaga7.Enabled = false;
+            }
+            else
+            {
+                vagas.AtualizarInterfaceButtons();
+            }
         }
 
         private void vaga8_Click(object sender, EventArgs e)
         {
             VagaController vagas = new VagaController(this);
-            vagas.ConfirmarReserva(8);
-            vagas.AtualizarInterfaceButtons();
-            vaga8.BackColor = Color.Red;
-            vaga8.Enabled = false;
+            bool vagaok = vagas.ConfirmarReserva(8);
+            if (vagaok)
+            {
+                vagas.AtualizarInterfaceButtons();
+                vaga8.BackColor = Color.Red;
+                vaga8.Enabled = false;
+            }
+            else
+            {
+                vagas.AtualizarInterfaceButtons();
+            }
         }
 
         private void vaga9_Click(object sender, EventArgs e)
         {
             VagaController vagas = new VagaController(this);
-            vagas.ConfirmarReserva(9);
-            vagas.AtualizarInterfaceButtons();
-            vaga9.BackColor = Color.Red;
-            vaga9.Enabled = false;
+            bool vagaok = vagas.ConfirmarReserva(9);
+            if (vagaok)
+            {
+                vagas.AtualizarInterfaceButtons();
+                vaga9.BackColor = Color.Red;
+                vaga9.Enabled = false;
+            }
+            else
+            {
+                vagas.AtualizarInterfaceButtons();
+            }
         }
 
         private void vaga10_Click(object sender, EventArgs e)
         {
             VagaController vagas = new VagaController(this);
-            vagas.ConfirmarReserva(10);
-            vagas.AtualizarInterfaceButtons();
-            vaga10.BackColor = Color.Red;
-            vaga10.Enabled = false;
+            bool vagaok = vagas.ConfirmarReserva(10);
+            if (vagaok)
+            {
+                vagas.AtualizarInterfaceButtons();
+                vaga10.BackColor = Color.Red;
+                vaga10.Enabled = false;
+            }
+            else
+            {
+                vagas.AtualizarInterfaceButtons();
+            }
         }
 
         private void vaga11_Click(object sender, EventArgs e)
         {
             VagaController vagas = new VagaController(this);
-            vagas.ConfirmarReserva(11);
-            vagas.AtualizarInterfaceButtons();
-            vaga11.BackColor = Color.Red;
-            vaga11.Enabled = false;
+            bool vagaok = vagas.ConfirmarReserva(11);
+            if (vagaok)
+            {
+                vagas.AtualizarInterfaceButtons();
+                vaga11.BackColor = Color.Red;
+                vaga11.Enabled = false;
+            }
+            else
+            {
+                vagas.AtualizarInterfaceButtons();
+            }
         }
 
         private void vaga12_Click(object sender, EventArgs e)
         {
             VagaController vagas = new VagaController(this);
-            vagas.ConfirmarReserva(12);
-            vagas.AtualizarInterfaceButtons();
-            vaga12.BackColor = Color.Red;
-            vaga12.Enabled = false;
+            bool vagaok = vagas.ConfirmarReserva(12);
+            if (vagaok)
+            {
+                vagas.AtualizarInterfaceButtons();
+                vaga12.BackColor = Color.Red;
+                vaga12.Enabled = false;
+            }
+            else
+            {
+                vagas.AtualizarInterfaceButtons();
+            }
         }
 
         private void vaga13_Click(object sender, EventArgs e)
         {
             VagaController vagas = new VagaController(this);
-            vagas.ConfirmarReserva(13);
-            vagas.AtualizarInterfaceButtons();
-            vaga13.BackColor = Color.Red;
-            vaga13.Enabled = false;
+            bool vagaok = vagas.ConfirmarReserva(13);
+            if (vagaok)
+            {
+                vagas.AtualizarInterfaceButtons();
+                vaga13.BackColor = Color.Red;
+                vaga13.Enabled = false;
+            }
+            else
+            {
+                vagas.AtualizarInterfaceButtons();
+            }
         }
 
         private void vaga14_Click(object sender, EventArgs e)
         {
             VagaController vagas = new VagaController(this);
-            vagas.ConfirmarReserva(14);
-            vagas.AtualizarInterfaceButtons();
-            vaga14.BackColor = Color.Red;
-            vaga14.Enabled = false;
+            bool vagaok = vagas.ConfirmarReserva(14);
+            if (vagaok)
+            {
+                vagas.AtualizarInterfaceButtons();
+                vaga14.BackColor = Color.Red;
+                vaga14.Enabled = false;
+            }
+            else
+            {
+                vagas.AtualizarInterfaceButtons();
+            }
         }
 
         private void vaga15_Click(object sender, EventArgs e)
         {
             VagaController vagas = new VagaController(this);
-            vagas.ConfirmarReserva(15);
-            vagas.AtualizarInterfaceButtons();
-            vaga15.BackColor = Color.Red;
-            vaga15.Enabled = false;
+            bool vagaok = vagas.ConfirmarReserva(15);
+            if (vagaok)
+            {
+                vagas.AtualizarInterfaceButtons();
+                vaga15.BackColor = Color.Red;
+                vaga15.Enabled = false;
+            }
+            else
+            {
+                vagas.AtualizarInterfaceButtons();
+            }
         }
 
         private void vaga16_Click(object sender, EventArgs e)
         {
             VagaController vagas = new VagaController(this);
-            vagas.ConfirmarReserva(16);
-            vagas.AtualizarInterfaceButtons();
-            vaga16.BackColor = Color.Red;
-            vaga16.Enabled = false;
+            bool vagaok = vagas.ConfirmarReserva(16);
+            if (vagaok)
+            {
+                vagas.AtualizarInterfaceButtons();
+                vaga16.BackColor = Color.Red;
+                vaga16.Enabled = false;
+            }
+            else
+            {
+                vagas.AtualizarInterfaceButtons();
+            }
         }
 
         private void vaga17_Click(object sender, EventArgs e)
         {
             VagaController vagas = new VagaController(this);
-            vagas.ConfirmarReserva(17);
-            vagas.AtualizarInterfaceButtons();
-            vaga17.BackColor = Color.Red;
-            vaga17.Enabled = false;
+            bool vagaok = vagas.ConfirmarReserva(17);
+            if (vagaok)
+            {
+                vagas.AtualizarInterfaceButtons();
+                vaga17.BackColor = Color.Red;
+                vaga17.Enabled = false;
+            }
+            else
+            {
+                vagas.AtualizarInterfaceButtons();
+            }
         }
 
         private void vaga18_Click(object sender, EventArgs e)
         {
             VagaController vagas = new VagaController(this);
-            vagas.ConfirmarReserva(18);
-            vagas.AtualizarInterfaceButtons();
-            vaga18.BackColor = Color.Red;
-            vaga18.Enabled = false;
+            bool vagaok = vagas.ConfirmarReserva(18);
+            if (vagaok)
+            {
+                vagas.AtualizarInterfaceButtons();
+                vaga18.BackColor = Color.Red;
+                vaga18.Enabled = false;
+            }
+            else
+            {
+                vagas.AtualizarInterfaceButtons();
+            }
         }
 
         private void vaga19_Click(object sender, EventArgs e)
         {
             VagaController vagas = new VagaController(this);
-            vagas.ConfirmarReserva(19);
-            vagas.AtualizarInterfaceButtons();
-            vaga19.BackColor = Color.Red;
-            vaga19.Enabled = false;
+            bool vagaok = vagas.ConfirmarReserva(19);
+            if (vagaok)
+            {
+                vagas.AtualizarInterfaceButtons();
+                vaga19.BackColor = Color.Red;
+                vaga19.Enabled = false;
+            }
+            else
+            {
+                vagas.AtualizarInterfaceButtons();
+            }
         }
 
         private void vaga20_Click(object sender, EventArgs e)
         {
             VagaController vagas = new VagaController(this);
-            vagas.ConfirmarReserva(20);
-            vagas.AtualizarInterfaceButtons();
-            vaga20.BackColor = Color.Red;
-            vaga20.Enabled = false;
+            bool vagaok = vagas.ConfirmarReserva(20);
+            if (vagaok)
+            {
+                vagas.AtualizarInterfaceButtons();
+                vaga20.BackColor = Color.Red;
+                vaga20.Enabled = false;
+            }
+            else
+            {
+                vagas.AtualizarInterfaceButtons();
+            }
         }
     }
 
