@@ -27,38 +27,47 @@ namespace PrototipoProjetoInterdisciplinar.View
 
         }
 
-
-        private void vaga1_Click(object sender, EventArgs e)
-        {
+            private void vaga1_Click(object sender, EventArgs e)
+            {
             CadastroClienteController cdCliente = new();
             TransacaoController transacao = new();
             TransacaoModel dadosTransacao = new();
             VagaController vagas = new VagaController(this);
             ClienteModel cliente = new();
-            DialogResult result = MessageBox.Show("Cliente possui Cadastro?", "Confirmação",
-            MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
-            {
-                string nomeCadastrado = Microsoft.VisualBasic.Interaction.InputBox("Digite o nome do cliente:", "Nome do Cliente");
-                if (!string.IsNullOrEmpty(nomeCadastrado))
-                {
-                    cliente = cdCliente.BuscarClientePorNome(nomeCadastrado);
+            RelatorioController dadosCliente = new();
+            RelatorioModel relatorio = new();
 
-                    if (cliente != null)
+                DialogResult result = MessageBox.Show("Cliente possui Cadastro?", "Confirmação",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    string nomeCadastrado = Microsoft.VisualBasic.Interaction.InputBox("Digite o nome do cliente:", "Nome do Cliente");
+                    if (!string.IsNullOrEmpty(nomeCadastrado))
                     {
-                        
-                        transacao.EfetuarTransacao(cliente);
-                        bool vagaok = vagas.ConfirmarReserva(1);
-                        if (vagaok)
+                        cliente = cdCliente.BuscarClientePorNome(nomeCadastrado);
+
+                        if (cliente != null)
                         {
-                            vagas.AtualizarInterfaceButtons();
-                            vaga1.BackColor = Color.Red;
-                            vaga1.Enabled = false;
-                            transacao.GerarComprovante(cliente, dadosTransacao);
+                        transacao.EfetuarTransacao(cliente);
+                        relatorio = dadosCliente.DadosCliente(cliente.Id);
+                        if(relatorio != null) { 
+                            bool vagaok = vagas.ConfirmarReserva(1);
+                            if (vagaok)
+                            {
+                                vagas.AtualizarInterfaceButtons();
+                                vaga1.BackColor = Color.Red;
+                                vaga1.Enabled = false;
+                                transacao.GerarComprovante(relatorio);
+                            }
+                            else
+                            {
+                                vagas.AtualizarInterfaceButtons();
+                            }
+                        }
                         }
                         else
                         {
-                            vagas.AtualizarInterfaceButtons();
+                            MessageBox.Show("Cliente não localizado", "Erro");
                         }
                     }
                     else
@@ -68,16 +77,11 @@ namespace PrototipoProjetoInterdisciplinar.View
                 }
                 else
                 {
-                    MessageBox.Show("Cliente não localizado", "Erro");
+                    MessageBox.Show("Efetue o cadastro do cliente para prosseguir", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-            }
-            else
-            {
-                MessageBox.Show("Efetue o cadastro do cliente para prosseguir", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
 
 
-        }
+            }
 
         private void vaga2_Click(object sender, EventArgs e)
         {
@@ -86,6 +90,9 @@ namespace PrototipoProjetoInterdisciplinar.View
             TransacaoModel dadosTransacao = new();
             VagaController vagas = new VagaController(this);
             ClienteModel cliente = new();
+            RelatorioController dadosCliente = new();
+            RelatorioModel relatorio = new();
+
             DialogResult result = MessageBox.Show("Cliente possui Cadastro?", "Confirmação",
             MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
@@ -97,19 +104,22 @@ namespace PrototipoProjetoInterdisciplinar.View
 
                     if (cliente != null)
                     {
-
                         transacao.EfetuarTransacao(cliente);
-                        bool vagaok = vagas.ConfirmarReserva(2);
-                        if (vagaok)
+                        relatorio = dadosCliente.DadosCliente(cliente.Id);
+                        if (relatorio != null)
                         {
-                            vagas.AtualizarInterfaceButtons();
-                            vaga2.BackColor = Color.Red;
-                            vaga2.Enabled = false;
-                            transacao.GerarComprovante(cliente, dadosTransacao);
-                        }
-                        else
-                        {
-                            vagas.AtualizarInterfaceButtons();
+                            bool vagaok = vagas.ConfirmarReserva(2);
+                            if (vagaok)
+                            {
+                                vagas.AtualizarInterfaceButtons();
+                                vaga2.BackColor = Color.Red;
+                                vaga2.Enabled = false;
+                                transacao.GerarComprovante(relatorio);
+                            }
+                            else
+                            {
+                                vagas.AtualizarInterfaceButtons();
+                            }
                         }
                     }
                     else
@@ -126,6 +136,8 @@ namespace PrototipoProjetoInterdisciplinar.View
             {
                 MessageBox.Show("Efetue o cadastro do cliente para prosseguir", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+
+
 
         }
 
@@ -136,6 +148,9 @@ namespace PrototipoProjetoInterdisciplinar.View
             TransacaoModel dadosTransacao = new();
             VagaController vagas = new VagaController(this);
             ClienteModel cliente = new();
+            RelatorioController dadosCliente = new();
+            RelatorioModel relatorio = new();
+
             DialogResult result = MessageBox.Show("Cliente possui Cadastro?", "Confirmação",
             MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
@@ -147,19 +162,22 @@ namespace PrototipoProjetoInterdisciplinar.View
 
                     if (cliente != null)
                     {
-
                         transacao.EfetuarTransacao(cliente);
-                        bool vagaok = vagas.ConfirmarReserva(3);
-                        if (vagaok)
+                        relatorio = dadosCliente.DadosCliente(cliente.Id);
+                        if (relatorio != null)
                         {
-                            vagas.AtualizarInterfaceButtons();
-                            vaga3.BackColor = Color.Red;
-                            vaga3.Enabled = false;
-                            transacao.GerarComprovante(cliente, dadosTransacao);
-                        }
-                        else
-                        {
-                            vagas.AtualizarInterfaceButtons();
+                            bool vagaok = vagas.ConfirmarReserva(3);
+                            if (vagaok)
+                            {
+                                vagas.AtualizarInterfaceButtons();
+                                vaga3.BackColor = Color.Red;
+                                vaga3.Enabled = false;
+                                transacao.GerarComprovante(relatorio);
+                            }
+                            else
+                            {
+                                vagas.AtualizarInterfaceButtons();
+                            }
                         }
                     }
                     else
@@ -176,6 +194,7 @@ namespace PrototipoProjetoInterdisciplinar.View
             {
                 MessageBox.Show("Efetue o cadastro do cliente para prosseguir", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+
 
         }
 
@@ -186,6 +205,9 @@ namespace PrototipoProjetoInterdisciplinar.View
             TransacaoModel dadosTransacao = new();
             VagaController vagas = new VagaController(this);
             ClienteModel cliente = new();
+            RelatorioController dadosCliente = new();
+            RelatorioModel relatorio = new();
+
             DialogResult result = MessageBox.Show("Cliente possui Cadastro?", "Confirmação",
             MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
@@ -197,19 +219,22 @@ namespace PrototipoProjetoInterdisciplinar.View
 
                     if (cliente != null)
                     {
-
                         transacao.EfetuarTransacao(cliente);
-                        bool vagaok = vagas.ConfirmarReserva(4);
-                        if (vagaok)
+                        relatorio = dadosCliente.DadosCliente(cliente.Id);
+                        if (relatorio != null)
                         {
-                            vagas.AtualizarInterfaceButtons();
-                            vaga4.BackColor = Color.Red;
-                            vaga4.Enabled = false;
-                            transacao.GerarComprovante(cliente, dadosTransacao);
-                        }
-                        else
-                        {
-                            vagas.AtualizarInterfaceButtons();
+                            bool vagaok = vagas.ConfirmarReserva(4);
+                            if (vagaok)
+                            {
+                                vagas.AtualizarInterfaceButtons();
+                                vaga4.BackColor = Color.Red;
+                                vaga4.Enabled = false;
+                                transacao.GerarComprovante(relatorio);
+                            }
+                            else
+                            {
+                                vagas.AtualizarInterfaceButtons();
+                            }
                         }
                     }
                     else
@@ -226,6 +251,7 @@ namespace PrototipoProjetoInterdisciplinar.View
             {
                 MessageBox.Show("Efetue o cadastro do cliente para prosseguir", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+
 
         }
 
@@ -236,6 +262,9 @@ namespace PrototipoProjetoInterdisciplinar.View
             TransacaoModel dadosTransacao = new();
             VagaController vagas = new VagaController(this);
             ClienteModel cliente = new();
+            RelatorioController dadosCliente = new();
+            RelatorioModel relatorio = new();
+
             DialogResult result = MessageBox.Show("Cliente possui Cadastro?", "Confirmação",
             MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
@@ -247,19 +276,22 @@ namespace PrototipoProjetoInterdisciplinar.View
 
                     if (cliente != null)
                     {
-
                         transacao.EfetuarTransacao(cliente);
-                        bool vagaok = vagas.ConfirmarReserva(5);
-                        if (vagaok)
+                        relatorio = dadosCliente.DadosCliente(cliente.Id);
+                        if (relatorio != null)
                         {
-                            vagas.AtualizarInterfaceButtons();
-                            vaga5.BackColor = Color.Red;
-                            vaga5.Enabled = false;
-                            transacao.GerarComprovante(cliente, dadosTransacao);
-                        }
-                        else
-                        {
-                            vagas.AtualizarInterfaceButtons();
+                            bool vagaok = vagas.ConfirmarReserva(5);
+                            if (vagaok)
+                            {
+                                vagas.AtualizarInterfaceButtons();
+                                vaga5.BackColor = Color.Red;
+                                vaga5.Enabled = false;
+                                transacao.GerarComprovante(relatorio);
+                            }
+                            else
+                            {
+                                vagas.AtualizarInterfaceButtons();
+                            }
                         }
                     }
                     else
@@ -276,6 +308,8 @@ namespace PrototipoProjetoInterdisciplinar.View
             {
                 MessageBox.Show("Efetue o cadastro do cliente para prosseguir", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+
+
 
         }
 
@@ -286,6 +320,9 @@ namespace PrototipoProjetoInterdisciplinar.View
             TransacaoModel dadosTransacao = new();
             VagaController vagas = new VagaController(this);
             ClienteModel cliente = new();
+            RelatorioController dadosCliente = new();
+            RelatorioModel relatorio = new();
+
             DialogResult result = MessageBox.Show("Cliente possui Cadastro?", "Confirmação",
             MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
@@ -297,19 +334,22 @@ namespace PrototipoProjetoInterdisciplinar.View
 
                     if (cliente != null)
                     {
-
                         transacao.EfetuarTransacao(cliente);
-                        bool vagaok = vagas.ConfirmarReserva(6);
-                        if (vagaok)
+                        relatorio = dadosCliente.DadosCliente(cliente.Id);
+                        if (relatorio != null)
                         {
-                            vagas.AtualizarInterfaceButtons();
-                            vaga6.BackColor = Color.Red;
-                            vaga6.Enabled = false;
-                            transacao.GerarComprovante(cliente, dadosTransacao);
-                        }
-                        else
-                        {
-                            vagas.AtualizarInterfaceButtons();
+                            bool vagaok = vagas.ConfirmarReserva(6);
+                            if (vagaok)
+                            {
+                                vagas.AtualizarInterfaceButtons();
+                                vaga6.BackColor = Color.Red;
+                                vaga6.Enabled = false;
+                                transacao.GerarComprovante(relatorio);
+                            }
+                            else
+                            {
+                                vagas.AtualizarInterfaceButtons();
+                            }
                         }
                     }
                     else
@@ -326,6 +366,8 @@ namespace PrototipoProjetoInterdisciplinar.View
             {
                 MessageBox.Show("Efetue o cadastro do cliente para prosseguir", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+
+
 
         }
 
@@ -336,6 +378,9 @@ namespace PrototipoProjetoInterdisciplinar.View
             TransacaoModel dadosTransacao = new();
             VagaController vagas = new VagaController(this);
             ClienteModel cliente = new();
+            RelatorioController dadosCliente = new();
+            RelatorioModel relatorio = new();
+
             DialogResult result = MessageBox.Show("Cliente possui Cadastro?", "Confirmação",
             MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
@@ -347,19 +392,22 @@ namespace PrototipoProjetoInterdisciplinar.View
 
                     if (cliente != null)
                     {
-
                         transacao.EfetuarTransacao(cliente);
-                        bool vagaok = vagas.ConfirmarReserva(7);
-                        if (vagaok)
+                        relatorio = dadosCliente.DadosCliente(cliente.Id);
+                        if (relatorio != null)
                         {
-                            vagas.AtualizarInterfaceButtons();
-                            vaga7.BackColor = Color.Red;
-                            vaga7.Enabled = false;
-                            transacao.GerarComprovante(cliente, dadosTransacao);
-                        }
-                        else
-                        {
-                            vagas.AtualizarInterfaceButtons();
+                            bool vagaok = vagas.ConfirmarReserva(7);
+                            if (vagaok)
+                            {
+                                vagas.AtualizarInterfaceButtons();
+                                vaga7.BackColor = Color.Red;
+                                vaga7.Enabled = false;
+                                transacao.GerarComprovante(relatorio);
+                            }
+                            else
+                            {
+                                vagas.AtualizarInterfaceButtons();
+                            }
                         }
                     }
                     else
@@ -376,6 +424,7 @@ namespace PrototipoProjetoInterdisciplinar.View
             {
                 MessageBox.Show("Efetue o cadastro do cliente para prosseguir", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+
 
         }
 
@@ -386,6 +435,9 @@ namespace PrototipoProjetoInterdisciplinar.View
             TransacaoModel dadosTransacao = new();
             VagaController vagas = new VagaController(this);
             ClienteModel cliente = new();
+            RelatorioController dadosCliente = new();
+            RelatorioModel relatorio = new();
+
             DialogResult result = MessageBox.Show("Cliente possui Cadastro?", "Confirmação",
             MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
@@ -397,19 +449,22 @@ namespace PrototipoProjetoInterdisciplinar.View
 
                     if (cliente != null)
                     {
-
                         transacao.EfetuarTransacao(cliente);
-                        bool vagaok = vagas.ConfirmarReserva(8);
-                        if (vagaok)
+                        relatorio = dadosCliente.DadosCliente(cliente.Id);
+                        if (relatorio != null)
                         {
-                            vagas.AtualizarInterfaceButtons();
-                            vaga8.BackColor = Color.Red;
-                            vaga8.Enabled = false;
-                            transacao.GerarComprovante(cliente, dadosTransacao);
-                        }
-                        else
-                        {
-                            vagas.AtualizarInterfaceButtons();
+                            bool vagaok = vagas.ConfirmarReserva(8);
+                            if (vagaok)
+                            {
+                                vagas.AtualizarInterfaceButtons();
+                                vaga8.BackColor = Color.Red;
+                                vaga8.Enabled = false;
+                                transacao.GerarComprovante(relatorio);
+                            }
+                            else
+                            {
+                                vagas.AtualizarInterfaceButtons();
+                            }
                         }
                     }
                     else
@@ -426,6 +481,8 @@ namespace PrototipoProjetoInterdisciplinar.View
             {
                 MessageBox.Show("Efetue o cadastro do cliente para prosseguir", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+
+
 
         }
 
@@ -436,6 +493,9 @@ namespace PrototipoProjetoInterdisciplinar.View
             TransacaoModel dadosTransacao = new();
             VagaController vagas = new VagaController(this);
             ClienteModel cliente = new();
+            RelatorioController dadosCliente = new();
+            RelatorioModel relatorio = new();
+
             DialogResult result = MessageBox.Show("Cliente possui Cadastro?", "Confirmação",
             MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
@@ -447,19 +507,22 @@ namespace PrototipoProjetoInterdisciplinar.View
 
                     if (cliente != null)
                     {
-
                         transacao.EfetuarTransacao(cliente);
-                        bool vagaok = vagas.ConfirmarReserva(9);
-                        if (vagaok)
+                        relatorio = dadosCliente.DadosCliente(cliente.Id);
+                        if (relatorio != null)
                         {
-                            vagas.AtualizarInterfaceButtons();
-                            vaga9.BackColor = Color.Red;
-                            vaga9.Enabled = false;
-                            transacao.GerarComprovante(cliente, dadosTransacao);
-                        }
-                        else
-                        {
-                            vagas.AtualizarInterfaceButtons();
+                            bool vagaok = vagas.ConfirmarReserva(9);
+                            if (vagaok)
+                            {
+                                vagas.AtualizarInterfaceButtons();
+                                vaga9.BackColor = Color.Red;
+                                vaga9.Enabled = false;
+                                transacao.GerarComprovante(relatorio);
+                            }
+                            else
+                            {
+                                vagas.AtualizarInterfaceButtons();
+                            }
                         }
                     }
                     else
@@ -476,6 +539,8 @@ namespace PrototipoProjetoInterdisciplinar.View
             {
                 MessageBox.Show("Efetue o cadastro do cliente para prosseguir", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+
+
 
         }
 
@@ -486,6 +551,9 @@ namespace PrototipoProjetoInterdisciplinar.View
             TransacaoModel dadosTransacao = new();
             VagaController vagas = new VagaController(this);
             ClienteModel cliente = new();
+            RelatorioController dadosCliente = new();
+            RelatorioModel relatorio = new();
+
             DialogResult result = MessageBox.Show("Cliente possui Cadastro?", "Confirmação",
             MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
@@ -497,19 +565,22 @@ namespace PrototipoProjetoInterdisciplinar.View
 
                     if (cliente != null)
                     {
-
                         transacao.EfetuarTransacao(cliente);
-                        bool vagaok = vagas.ConfirmarReserva(10);
-                        if (vagaok)
+                        relatorio = dadosCliente.DadosCliente(cliente.Id);
+                        if (relatorio != null)
                         {
-                            vagas.AtualizarInterfaceButtons();
-                            vaga10.BackColor = Color.Red;
-                            vaga10.Enabled = false;
-                            transacao.GerarComprovante(cliente, dadosTransacao);
-                        }
-                        else
-                        {
-                            vagas.AtualizarInterfaceButtons();
+                            bool vagaok = vagas.ConfirmarReserva(10);
+                            if (vagaok)
+                            {
+                                vagas.AtualizarInterfaceButtons();
+                                vaga10.BackColor = Color.Red;
+                                vaga10.Enabled = false;
+                                transacao.GerarComprovante(relatorio);
+                            }
+                            else
+                            {
+                                vagas.AtualizarInterfaceButtons();
+                            }
                         }
                     }
                     else
@@ -526,6 +597,8 @@ namespace PrototipoProjetoInterdisciplinar.View
             {
                 MessageBox.Show("Efetue o cadastro do cliente para prosseguir", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+
+
 
         }
 
@@ -536,6 +609,9 @@ namespace PrototipoProjetoInterdisciplinar.View
             TransacaoModel dadosTransacao = new();
             VagaController vagas = new VagaController(this);
             ClienteModel cliente = new();
+            RelatorioController dadosCliente = new();
+            RelatorioModel relatorio = new();
+
             DialogResult result = MessageBox.Show("Cliente possui Cadastro?", "Confirmação",
             MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
@@ -547,19 +623,22 @@ namespace PrototipoProjetoInterdisciplinar.View
 
                     if (cliente != null)
                     {
-
                         transacao.EfetuarTransacao(cliente);
-                        bool vagaok = vagas.ConfirmarReserva(11);
-                        if (vagaok)
+                        relatorio = dadosCliente.DadosCliente(cliente.Id);
+                        if (relatorio != null)
                         {
-                            vagas.AtualizarInterfaceButtons();
-                            vaga11.BackColor = Color.Red;
-                            vaga11.Enabled = false;
-                            transacao.GerarComprovante(cliente, dadosTransacao);
-                        }
-                        else
-                        {
-                            vagas.AtualizarInterfaceButtons();
+                            bool vagaok = vagas.ConfirmarReserva(11);
+                            if (vagaok)
+                            {
+                                vagas.AtualizarInterfaceButtons();
+                                vaga11.BackColor = Color.Red;
+                                vaga11.Enabled = false;
+                                transacao.GerarComprovante(relatorio);
+                            }
+                            else
+                            {
+                                vagas.AtualizarInterfaceButtons();
+                            }
                         }
                     }
                     else
@@ -576,6 +655,7 @@ namespace PrototipoProjetoInterdisciplinar.View
             {
                 MessageBox.Show("Efetue o cadastro do cliente para prosseguir", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+
 
         }
 
@@ -586,6 +666,9 @@ namespace PrototipoProjetoInterdisciplinar.View
             TransacaoModel dadosTransacao = new();
             VagaController vagas = new VagaController(this);
             ClienteModel cliente = new();
+            RelatorioController dadosCliente = new();
+            RelatorioModel relatorio = new();
+
             DialogResult result = MessageBox.Show("Cliente possui Cadastro?", "Confirmação",
             MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
@@ -597,19 +680,22 @@ namespace PrototipoProjetoInterdisciplinar.View
 
                     if (cliente != null)
                     {
-
                         transacao.EfetuarTransacao(cliente);
-                        bool vagaok = vagas.ConfirmarReserva(12);
-                        if (vagaok)
+                        relatorio = dadosCliente.DadosCliente(cliente.Id);
+                        if (relatorio != null)
                         {
-                            vagas.AtualizarInterfaceButtons();
-                            vaga12.BackColor = Color.Red;
-                            vaga12.Enabled = false;
-                            transacao.GerarComprovante(cliente, dadosTransacao);
-                        }
-                        else
-                        {
-                            vagas.AtualizarInterfaceButtons();
+                            bool vagaok = vagas.ConfirmarReserva(12);
+                            if (vagaok)
+                            {
+                                vagas.AtualizarInterfaceButtons();
+                                vaga12.BackColor = Color.Red;
+                                vaga12.Enabled = false;
+                                transacao.GerarComprovante(relatorio);
+                            }
+                            else
+                            {
+                                vagas.AtualizarInterfaceButtons();
+                            }
                         }
                     }
                     else
@@ -626,6 +712,7 @@ namespace PrototipoProjetoInterdisciplinar.View
             {
                 MessageBox.Show("Efetue o cadastro do cliente para prosseguir", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+
 
         }
 
@@ -636,6 +723,9 @@ namespace PrototipoProjetoInterdisciplinar.View
             TransacaoModel dadosTransacao = new();
             VagaController vagas = new VagaController(this);
             ClienteModel cliente = new();
+            RelatorioController dadosCliente = new();
+            RelatorioModel relatorio = new();
+
             DialogResult result = MessageBox.Show("Cliente possui Cadastro?", "Confirmação",
             MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
@@ -647,19 +737,22 @@ namespace PrototipoProjetoInterdisciplinar.View
 
                     if (cliente != null)
                     {
-
                         transacao.EfetuarTransacao(cliente);
-                        bool vagaok = vagas.ConfirmarReserva(13);
-                        if (vagaok)
+                        relatorio = dadosCliente.DadosCliente(cliente.Id);
+                        if (relatorio != null)
                         {
-                            vagas.AtualizarInterfaceButtons();
-                            vaga13.BackColor = Color.Red;
-                            vaga13.Enabled = false;
-                            transacao.GerarComprovante(cliente, dadosTransacao);
-                        }
-                        else
-                        {
-                            vagas.AtualizarInterfaceButtons();
+                            bool vagaok = vagas.ConfirmarReserva(13);
+                            if (vagaok)
+                            {
+                                vagas.AtualizarInterfaceButtons();
+                                vaga13.BackColor = Color.Red;
+                                vaga13.Enabled = false;
+                                transacao.GerarComprovante(relatorio);
+                            }
+                            else
+                            {
+                                vagas.AtualizarInterfaceButtons();
+                            }
                         }
                     }
                     else
@@ -676,6 +769,7 @@ namespace PrototipoProjetoInterdisciplinar.View
             {
                 MessageBox.Show("Efetue o cadastro do cliente para prosseguir", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+
 
         }
 
@@ -686,6 +780,9 @@ namespace PrototipoProjetoInterdisciplinar.View
             TransacaoModel dadosTransacao = new();
             VagaController vagas = new VagaController(this);
             ClienteModel cliente = new();
+            RelatorioController dadosCliente = new();
+            RelatorioModel relatorio = new();
+
             DialogResult result = MessageBox.Show("Cliente possui Cadastro?", "Confirmação",
             MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
@@ -697,19 +794,22 @@ namespace PrototipoProjetoInterdisciplinar.View
 
                     if (cliente != null)
                     {
-
                         transacao.EfetuarTransacao(cliente);
-                        bool vagaok = vagas.ConfirmarReserva(14);
-                        if (vagaok)
+                        relatorio = dadosCliente.DadosCliente(cliente.Id);
+                        if (relatorio != null)
                         {
-                            vagas.AtualizarInterfaceButtons();
-                            vaga14.BackColor = Color.Red;
-                            vaga14.Enabled = false;
-                            transacao.GerarComprovante(cliente, dadosTransacao);
-                        }
-                        else
-                        {
-                            vagas.AtualizarInterfaceButtons();
+                            bool vagaok = vagas.ConfirmarReserva(14);
+                            if (vagaok)
+                            {
+                                vagas.AtualizarInterfaceButtons();
+                                vaga14.BackColor = Color.Red;
+                                vaga14.Enabled = false;
+                                transacao.GerarComprovante(relatorio);
+                            }
+                            else
+                            {
+                                vagas.AtualizarInterfaceButtons();
+                            }
                         }
                     }
                     else
@@ -726,6 +826,7 @@ namespace PrototipoProjetoInterdisciplinar.View
             {
                 MessageBox.Show("Efetue o cadastro do cliente para prosseguir", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+
 
         }
 
@@ -736,6 +837,9 @@ namespace PrototipoProjetoInterdisciplinar.View
             TransacaoModel dadosTransacao = new();
             VagaController vagas = new VagaController(this);
             ClienteModel cliente = new();
+            RelatorioController dadosCliente = new();
+            RelatorioModel relatorio = new();
+
             DialogResult result = MessageBox.Show("Cliente possui Cadastro?", "Confirmação",
             MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
@@ -747,19 +851,22 @@ namespace PrototipoProjetoInterdisciplinar.View
 
                     if (cliente != null)
                     {
-
                         transacao.EfetuarTransacao(cliente);
-                        bool vagaok = vagas.ConfirmarReserva(15);
-                        if (vagaok)
+                        relatorio = dadosCliente.DadosCliente(cliente.Id);
+                        if (relatorio != null)
                         {
-                            vagas.AtualizarInterfaceButtons();
-                            vaga15.BackColor = Color.Red;
-                            vaga15.Enabled = false;
-                            transacao.GerarComprovante(cliente, dadosTransacao);
-                        }
-                        else
-                        {
-                            vagas.AtualizarInterfaceButtons();
+                            bool vagaok = vagas.ConfirmarReserva(15);
+                            if (vagaok)
+                            {
+                                vagas.AtualizarInterfaceButtons();
+                                vaga15.BackColor = Color.Red;
+                                vaga15.Enabled = false;
+                                transacao.GerarComprovante(relatorio);
+                            }
+                            else
+                            {
+                                vagas.AtualizarInterfaceButtons();
+                            }
                         }
                     }
                     else
@@ -776,6 +883,7 @@ namespace PrototipoProjetoInterdisciplinar.View
             {
                 MessageBox.Show("Efetue o cadastro do cliente para prosseguir", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+
 
         }
 
@@ -786,6 +894,9 @@ namespace PrototipoProjetoInterdisciplinar.View
             TransacaoModel dadosTransacao = new();
             VagaController vagas = new VagaController(this);
             ClienteModel cliente = new();
+            RelatorioController dadosCliente = new();
+            RelatorioModel relatorio = new();
+
             DialogResult result = MessageBox.Show("Cliente possui Cadastro?", "Confirmação",
             MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
@@ -797,19 +908,22 @@ namespace PrototipoProjetoInterdisciplinar.View
 
                     if (cliente != null)
                     {
-
                         transacao.EfetuarTransacao(cliente);
-                        bool vagaok = vagas.ConfirmarReserva(16);
-                        if (vagaok)
+                        relatorio = dadosCliente.DadosCliente(cliente.Id);
+                        if (relatorio != null)
                         {
-                            vagas.AtualizarInterfaceButtons();
-                            vaga16.BackColor = Color.Red;
-                            vaga16.Enabled = false;
-                            transacao.GerarComprovante(cliente, dadosTransacao);
-                        }
-                        else
-                        {
-                            vagas.AtualizarInterfaceButtons();
+                            bool vagaok = vagas.ConfirmarReserva(16);
+                            if (vagaok)
+                            {
+                                vagas.AtualizarInterfaceButtons();
+                                vaga16.BackColor = Color.Red;
+                                vaga16.Enabled = false;
+                                transacao.GerarComprovante(relatorio);
+                            }
+                            else
+                            {
+                                vagas.AtualizarInterfaceButtons();
+                            }
                         }
                     }
                     else
@@ -826,6 +940,8 @@ namespace PrototipoProjetoInterdisciplinar.View
             {
                 MessageBox.Show("Efetue o cadastro do cliente para prosseguir", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+
+
 
         }
 
@@ -836,6 +952,9 @@ namespace PrototipoProjetoInterdisciplinar.View
             TransacaoModel dadosTransacao = new();
             VagaController vagas = new VagaController(this);
             ClienteModel cliente = new();
+            RelatorioController dadosCliente = new();
+            RelatorioModel relatorio = new();
+
             DialogResult result = MessageBox.Show("Cliente possui Cadastro?", "Confirmação",
             MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
@@ -847,19 +966,22 @@ namespace PrototipoProjetoInterdisciplinar.View
 
                     if (cliente != null)
                     {
-
                         transacao.EfetuarTransacao(cliente);
-                        bool vagaok = vagas.ConfirmarReserva(17);
-                        if (vagaok)
+                        relatorio = dadosCliente.DadosCliente(cliente.Id);
+                        if (relatorio != null)
                         {
-                            vagas.AtualizarInterfaceButtons();
-                            vaga17.BackColor = Color.Red;
-                            vaga17.Enabled = false;
-                            transacao.GerarComprovante(cliente, dadosTransacao);
-                        }
-                        else
-                        {
-                            vagas.AtualizarInterfaceButtons();
+                            bool vagaok = vagas.ConfirmarReserva(17);
+                            if (vagaok)
+                            {
+                                vagas.AtualizarInterfaceButtons();
+                                vaga17.BackColor = Color.Red;
+                                vaga17.Enabled = false;
+                                transacao.GerarComprovante(relatorio);
+                            }
+                            else
+                            {
+                                vagas.AtualizarInterfaceButtons();
+                            }
                         }
                     }
                     else
@@ -876,6 +998,7 @@ namespace PrototipoProjetoInterdisciplinar.View
             {
                 MessageBox.Show("Efetue o cadastro do cliente para prosseguir", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+
 
         }
 
@@ -886,6 +1009,9 @@ namespace PrototipoProjetoInterdisciplinar.View
             TransacaoModel dadosTransacao = new();
             VagaController vagas = new VagaController(this);
             ClienteModel cliente = new();
+            RelatorioController dadosCliente = new();
+            RelatorioModel relatorio = new();
+
             DialogResult result = MessageBox.Show("Cliente possui Cadastro?", "Confirmação",
             MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
@@ -897,19 +1023,22 @@ namespace PrototipoProjetoInterdisciplinar.View
 
                     if (cliente != null)
                     {
-
                         transacao.EfetuarTransacao(cliente);
-                        bool vagaok = vagas.ConfirmarReserva(18);
-                        if (vagaok)
+                        relatorio = dadosCliente.DadosCliente(cliente.Id);
+                        if (relatorio != null)
                         {
-                            vagas.AtualizarInterfaceButtons();
-                            vaga18.BackColor = Color.Red;
-                            vaga18.Enabled = false;
-                            transacao.GerarComprovante(cliente, dadosTransacao);
-                        }
-                        else
-                        {
-                            vagas.AtualizarInterfaceButtons();
+                            bool vagaok = vagas.ConfirmarReserva(18);
+                            if (vagaok)
+                            {
+                                vagas.AtualizarInterfaceButtons();
+                                vaga18.BackColor = Color.Red;
+                                vaga18.Enabled = false;
+                                transacao.GerarComprovante(relatorio);
+                            }
+                            else
+                            {
+                                vagas.AtualizarInterfaceButtons();
+                            }
                         }
                     }
                     else
@@ -926,6 +1055,7 @@ namespace PrototipoProjetoInterdisciplinar.View
             {
                 MessageBox.Show("Efetue o cadastro do cliente para prosseguir", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+
 
         }
 
@@ -936,6 +1066,9 @@ namespace PrototipoProjetoInterdisciplinar.View
             TransacaoModel dadosTransacao = new();
             VagaController vagas = new VagaController(this);
             ClienteModel cliente = new();
+            RelatorioController dadosCliente = new();
+            RelatorioModel relatorio = new();
+
             DialogResult result = MessageBox.Show("Cliente possui Cadastro?", "Confirmação",
             MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
@@ -947,19 +1080,22 @@ namespace PrototipoProjetoInterdisciplinar.View
 
                     if (cliente != null)
                     {
-
                         transacao.EfetuarTransacao(cliente);
-                        bool vagaok = vagas.ConfirmarReserva(19);
-                        if (vagaok)
+                        relatorio = dadosCliente.DadosCliente(cliente.Id);
+                        if (relatorio != null)
                         {
-                            vagas.AtualizarInterfaceButtons();
-                            vaga19.BackColor = Color.Red;
-                            vaga19.Enabled = false;
-                            transacao.GerarComprovante(cliente, dadosTransacao);
-                        }
-                        else
-                        {
-                            vagas.AtualizarInterfaceButtons();
+                            bool vagaok = vagas.ConfirmarReserva(19);
+                            if (vagaok)
+                            {
+                                vagas.AtualizarInterfaceButtons();
+                                vaga19.BackColor = Color.Red;
+                                vaga19.Enabled = false;
+                                transacao.GerarComprovante(relatorio);
+                            }
+                            else
+                            {
+                                vagas.AtualizarInterfaceButtons();
+                            }
                         }
                     }
                     else
@@ -976,6 +1112,7 @@ namespace PrototipoProjetoInterdisciplinar.View
             {
                 MessageBox.Show("Efetue o cadastro do cliente para prosseguir", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+
 
         }
 
@@ -986,6 +1123,9 @@ namespace PrototipoProjetoInterdisciplinar.View
             TransacaoModel dadosTransacao = new();
             VagaController vagas = new VagaController(this);
             ClienteModel cliente = new();
+            RelatorioController dadosCliente = new();
+            RelatorioModel relatorio = new();
+
             DialogResult result = MessageBox.Show("Cliente possui Cadastro?", "Confirmação",
             MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
@@ -997,19 +1137,22 @@ namespace PrototipoProjetoInterdisciplinar.View
 
                     if (cliente != null)
                     {
-
                         transacao.EfetuarTransacao(cliente);
-                        bool vagaok = vagas.ConfirmarReserva(20);
-                        if (vagaok)
+                        relatorio = dadosCliente.DadosCliente(cliente.Id);
+                        if (relatorio != null)
                         {
-                            vagas.AtualizarInterfaceButtons();
-                            vaga20.BackColor = Color.Red;
-                            vaga20.Enabled = false;
-                            transacao.GerarComprovante(cliente, dadosTransacao);
-                        }
-                        else
-                        {
-                            vagas.AtualizarInterfaceButtons();
+                            bool vagaok = vagas.ConfirmarReserva(20);
+                            if (vagaok)
+                            {
+                                vagas.AtualizarInterfaceButtons();
+                                vaga20.BackColor = Color.Red;
+                                vaga20.Enabled = false;
+                                transacao.GerarComprovante(relatorio);
+                            }
+                            else
+                            {
+                                vagas.AtualizarInterfaceButtons();
+                            }
                         }
                     }
                     else
@@ -1026,6 +1169,7 @@ namespace PrototipoProjetoInterdisciplinar.View
             {
                 MessageBox.Show("Efetue o cadastro do cliente para prosseguir", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+
 
         }
     }

@@ -167,7 +167,7 @@
             txtUsuario.BackColor = Color.White;
             txtUsuario.BorderStyle = BorderStyle.None;
             txtUsuario.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            txtUsuario.ForeColor = Color.White;
+            txtUsuario.ForeColor = Color.Black;
             txtUsuario.Location = new Point(42, 141);
             txtUsuario.Name = "txtUsuario";
             txtUsuario.PlaceholderText = "Usuario";
@@ -195,7 +195,7 @@
             txtSenha.BackColor = Color.White;
             txtSenha.BorderStyle = BorderStyle.None;
             txtSenha.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            txtSenha.ForeColor = Color.White;
+            txtSenha.ForeColor = Color.Black;
             txtSenha.Location = new Point(42, 181);
             txtSenha.Name = "txtSenha";
             txtSenha.PasswordChar = '*';

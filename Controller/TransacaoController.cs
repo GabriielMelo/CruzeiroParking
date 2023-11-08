@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace PrototipoProjetoInterdisciplinar.Controller
 {
     public class TransacaoController
@@ -20,7 +21,7 @@ namespace PrototipoProjetoInterdisciplinar.Controller
                 conn.Conectar();
                 Random random = new();
                 int id_cliente = cliente.Id;
-                int cod_transacao = random.Next(1000,10000);
+                int cod_transacao = GerarCodigoTransacao();
 
                 TransacaoModel transacao = new()
                 {
@@ -67,9 +68,17 @@ namespace PrototipoProjetoInterdisciplinar.Controller
             
         }
 
-        public void GerarComprovante(ClienteModel cliente, TransacaoModel transacao)
+        public int GerarCodigoTransacao()
+        {
+            Random random = new();
+            int cod_transacao = random.Next(1000, 10000);
+            return cod_transacao;
+        }
+
+        public void GerarComprovante(RelatorioModel relatorio)
         {
             string localComprovante = "";
+            string dlComprovante = Path.GetTempFileName();
             FileInfo comprovante = new("ComprovanteReserva.xlsx");
 
             if (comprovante.Exists)
@@ -77,26 +86,46 @@ namespace PrototipoProjetoInterdisciplinar.Controller
                 comprovante.Delete();
                 comprovante = new FileInfo("ComprovanteReserva.xlsx");
             }
-            ExcelPackage package = new(comprovante);
 
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+            ExcelPackage package = new(comprovante);
             ExcelWorksheet worksheet = package.Workbook.Worksheets.Add("Comprovante");
 
             worksheet.Cells["A1"].Value = "Comprovante de Reserva";
             worksheet.Cells["A3"].Value = "Nome do Cliente:";
-            worksheet.Cells["B3"].Value = cliente.Nome;
+            worksheet.Cells["C3"].Value = relatorio.Nome;
             worksheet.Cells["A4"].Value = "Modelo do Carro:";
-            worksheet.Cells["B4"].Value = cliente.ModeloCarro;
+            worksheet.Cells["C4"].Value = relatorio.ModeloCarro;
             worksheet.Cells["A5"].Value = "Placa do Carro:";
-            worksheet.Cells["B5"].Value = cliente.PlacaCarro;
-            worksheet.Cells["A6"].Value = "Horário da Reserva:";
-            worksheet.Cells["B6"].Value = transacao.Data_Transacao;
+            worksheet.Cells["C5"].Value = relatorio.PlacaCarro;
+            worksheet.Cells["A6"].Value = "Data da reserva:";
+            worksheet.Cells["C6"].Value = relatorio.DataTransacao;
             worksheet.Cells["A7"].Value = "Código da reserva:";
-            worksheet.Cells["B7"].Value = transacao.Cod_transacao;
+            worksheet.Cells["C7"].Value = relatorio.Cod_transacao;
 
-            package.Save();
+            try
+            {
+                package.Save();
+                localComprovante = comprovante.FullName;
+                System.Diagnostics.Process.Start(localComprovante);
+            } catch(Exception ex)
+            {
+                MessageBox.Show("Erro ao abrir o arquivo", ex.Message);
+                File.WriteAllBytes(dlComprovante, package.GetAsByteArray());
+                SaveFileDialog download = new();
+                download.Filter = "Arquivos Excel (*.xlsx)|*.xlsx";
+                download.FileName = "ComprovanteReserva.xlsx";
+                if(download.ShowDialog() == DialogResult.OK)
+                {
+                    string savePatch = download.FileName;
+                    File.Copy(dlComprovante, savePatch, true);
+                }
+                // File.Delete(download.FileName);
+            } finally
+            {
 
-            localComprovante = comprovante.FullName;
-            System.Diagnostics.Process.Start(localComprovante);
+            }
+            
 
         }
     }

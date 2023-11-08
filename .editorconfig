@@ -29,3 +29,6 @@ dotnet_diagnostic.CS8618.severity = none
 
 # IDE0059: Atribuição desnecessária de um valor
 dotnet_diagnostic.IDE0059.severity = none
+
+# CA1822: Marcar membros como estáticos
+dotnet_diagnostic.CA1822.severity = none

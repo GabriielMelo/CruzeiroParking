@@ -49,7 +49,7 @@ namespace PrototipoProjetoInterdisciplinar.Model
             get { return descricao; }
             set { descricao = value; }
         }
-        public void definirDados(int id_cliente, string data_transacao, double valor, string descricao)
+        public void definirDados(int id_cliente, string data_transacao, double valor, string descricao,int cod_transacao)
         {
             Id_Cliente = id_cliente;
             Data_Transacao = data_transacao;
