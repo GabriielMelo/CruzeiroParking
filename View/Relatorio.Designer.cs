@@ -1,6 +1,6 @@
 ﻿namespace PrototipoProjetoInterdisciplinar.View
 {
-    partial class Relatorios
+    partial class Relatorio
     {
         /// <summary>
         /// Required designer variable.

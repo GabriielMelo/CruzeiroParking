@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using MySqlX.XDevAPI;
 using PrototipoProjetoInterdisciplinar.Controller;
 using PrototipoProjetoInterdisciplinar.Model;
 using System;
@@ -53,9 +54,51 @@ namespace PrototipoProjetoInterdisciplinar.Controllers
             {
                 conn.FecharConexao();
             }
-
         }
-        public bool BuscarCliente(string nome)
+
+
+        public ClienteModel BuscarClientePorNome(string nome)
+        {
+            try
+            {
+                conn.Conectar();
+                string sql = "SELECT * FROM clientes WHERE NOME LIKE @nome";
+
+                MySqlCommand command = new MySqlCommand(sql, conn.ObterConexao());
+                command.Parameters.AddWithValue("@nome", "%" + nome + "%");
+                MySqlDataReader reader = command.ExecuteReader();
+                if (reader.Read())
+                {
+                    int idCliente = (int)reader["id"];
+                    
+                    ClienteModel cliente = new()
+                    {
+                        Id = idCliente,
+                        Nome = reader["nome"].ToString(),
+                        Documento = reader["documento"].ToString(),
+                        Endereco = reader["endereco"].ToString(),
+                        Telefone = reader["telefone"].ToString(),
+                        ModeloCarro = reader["modeloCarro"].ToString(),
+                        PlacaCarro = reader["placaCarro"].ToString()
+                    };
+                    return cliente;
+                }
+                
+                return null; 
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao buscar cliente: " + ex.Message);
+                return null;
+            }
+            finally
+            {
+                conn.FecharConexao();
+            }
+        }
+
+
+        /*public bool BuscarCliente(string nome)
         {
             try
             {
@@ -115,6 +158,6 @@ namespace PrototipoProjetoInterdisciplinar.Controllers
             {
                 conn.FecharConexao();
             }
-        }
+        }*/
     }
 }

@@ -11,7 +11,7 @@ namespace PrototipoProjetoInterdisciplinar.Controllers
     public class ClienteModel
     {
 
-
+        private int id;
         private string nome;
         private string documento;
         private string endereco;
@@ -23,8 +23,10 @@ namespace PrototipoProjetoInterdisciplinar.Controllers
 
         public ClienteModel() { }
 
-        public ClienteModel(string nome, string documento, string endereco, string telefone, string modeloCarro, string placaCarro)
+        public ClienteModel(int id,string nome, string documento, string endereco, 
+            string telefone, string modeloCarro, string placaCarro)
         {
+            this.id = id;
             this.nome = nome;
             this.documento = documento;
             this.endereco = endereco;
@@ -35,6 +37,10 @@ namespace PrototipoProjetoInterdisciplinar.Controllers
 
         // -------------------------------------------------------------
 
+        public int Id { 
+            get { return id; }
+            set { id = value; }
+        }
         public string Nome
         {
                 get { return nome; }
@@ -75,6 +81,7 @@ namespace PrototipoProjetoInterdisciplinar.Controllers
 
         public void definirDados(string nome, string documento, string endereco, string telefone, string modeloCarro, string placaCarro)
         {
+            Id = id;
             Nome = nome;
             Documento = documento;
             Endereco = endereco;

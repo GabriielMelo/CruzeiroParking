@@ -84,7 +84,7 @@ namespace PrototipoProjetoInterdisciplinar.Views
             txtConsultarVagas.Hide();
             txtRelatorios.Show();
             txtPagamentos.Hide();
-            Relatorios relatorio = new Relatorios();
+            Relatorio relatorio = new Relatorio();
             relatorio.TopLevel = false;
             splitContainer2.Panel2.Controls.Clear();
             splitContainer2.Panel2.Controls.Add(relatorio);
@@ -99,7 +99,7 @@ namespace PrototipoProjetoInterdisciplinar.Views
             txtConsultarVagas.Hide();
             txtRelatorios.Hide();
             txtPagamentos.Show();
-            Pagamentos pagamento = new Pagamentos();
+            Pagamento pagamento = new Pagamento();
             pagamento.TopLevel = false;
             splitContainer2.Panel2.Controls.Clear();
             splitContainer2.Panel2.Controls.Add(pagamento);

@@ -32,7 +32,6 @@
             label2 = new Label();
             label6 = new Label();
             label7 = new Label();
-            label1 = new Label();
             panel1 = new Panel();
             txtSenha = new TextBox();
             btnVoltar = new Button();
@@ -64,7 +63,6 @@
             splitContainer1.Panel1.Controls.Add(label2);
             splitContainer1.Panel1.Controls.Add(label6);
             splitContainer1.Panel1.Controls.Add(label7);
-            splitContainer1.Panel1.Controls.Add(label1);
             // 
             // splitContainer1.Panel2
             // 
@@ -108,16 +106,6 @@
             label7.Size = new Size(98, 31);
             label7.TabIndex = 18;
             label7.Text = "Cruzeiro";
-            // 
-            // label1
-            // 
-            label1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            label1.AutoSize = true;
-            label1.Location = new Point(458, 40);
-            label1.Name = "label1";
-            label1.Size = new Size(38, 15);
-            label1.TabIndex = 17;
-            label1.Text = "label1";
             // 
             // panel1
             // 
@@ -291,7 +279,6 @@
         private Label label2;
         private Label label6;
         private Label label7;
-        private Label label1;
         private TextBox txtNome;
         private TextBox txtSenhaConfirm;
         private TextBox txtUsuario;
