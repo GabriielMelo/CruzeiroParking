@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using PrototipoProjetoInterdisciplinar.Controller;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,7 @@ namespace PrototipoProjetoInterdisciplinar.Controllers
 
         public bool validarUsuario(AutenticacaoModel autenticacao)
         {
-            ConexaoBDModel conn = new ConexaoBDModel();
+            ConexaoBDController conn = new ConexaoBDController();
                 try
                 {
                     conn.Conectar();

@@ -44,15 +44,12 @@
             btnRelatorio = new Button();
             btnConsultarVaga = new Button();
             btnCadastrar = new Button();
-            label2 = new Label();
-            txtVagasDisponíveis = new Label();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
             splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer2).BeginInit();
             splitContainer2.Panel1.SuspendLayout();
-            splitContainer2.Panel2.SuspendLayout();
             splitContainer2.SuspendLayout();
             SuspendLayout();
             // 
@@ -193,8 +190,6 @@
             // splitContainer2.Panel2
             // 
             splitContainer2.Panel2.BackColor = Color.Gainsboro;
-            splitContainer2.Panel2.Controls.Add(label2);
-            splitContainer2.Panel2.Controls.Add(txtVagasDisponíveis);
             splitContainer2.Size = new Size(720, 340);
             splitContainer2.SplitterDistance = 139;
             splitContainer2.TabIndex = 0;
@@ -289,24 +284,6 @@
             btnCadastrar.UseVisualStyleBackColor = true;
             btnCadastrar.Click += btnCadastrar_Click;
             // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(85, 64);
-            label2.Name = "label2";
-            label2.Size = new Size(19, 15);
-            label2.TabIndex = 1;
-            label2.Text = "20";
-            // 
-            // txtVagasDisponíveis
-            // 
-            txtVagasDisponíveis.AutoSize = true;
-            txtVagasDisponíveis.Location = new Point(43, 38);
-            txtVagasDisponíveis.Name = "txtVagasDisponíveis";
-            txtVagasDisponíveis.Size = new Size(100, 15);
-            txtVagasDisponíveis.TabIndex = 0;
-            txtVagasDisponíveis.Text = "Vagas Disponíveis";
-            // 
             // InicioView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -322,8 +299,6 @@
             ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
             splitContainer1.ResumeLayout(false);
             splitContainer2.Panel1.ResumeLayout(false);
-            splitContainer2.Panel2.ResumeLayout(false);
-            splitContainer2.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer2).EndInit();
             splitContainer2.ResumeLayout(false);
             ResumeLayout(false);
@@ -347,7 +322,5 @@
         private Label txtPagamentos;
         private Label txtRelatorios;
         private Label txtConsultarVagas;
-        private Label txtVagasDisponíveis;
-        private Label label2;
     }
 }

@@ -10,11 +10,24 @@ using System.Windows.Forms;
 
 namespace PrototipoProjetoInterdisciplinar.View
 {
-    public partial class Relatorio : Form
+    public partial class PagamentoView : Form
     {
-        public Relatorio()
+        public PagamentoView()
         {
             InitializeComponent();
+
         }
+
+        private void Limpar()
+        {
+            txtCartao.Clear();
+            txtVencimento.Clear();
+            txtCod.Clear();
+            txtBanco.Clear();
+            txtNome.Clear();
+            txtCodigoTransacao.Clear();
+        }
+
+
     }
 }

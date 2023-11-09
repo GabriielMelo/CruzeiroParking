@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using PrototipoProjetoInterdisciplinar.Controller;
 using PrototipoProjetoInterdisciplinar.Model;
 using System;
 using System.Collections.Generic;
@@ -7,12 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
+
 namespace PrototipoProjetoInterdisciplinar.Controllers
 {
     public class CadastroFuncionarioController
     {
 
-        ConexaoBDModel conn = new ConexaoBDModel();
+        ConexaoBDController conn = new ConexaoBDController();
 
         public bool cadastroFuncionario(FuncionarioModel funcionario)
         {

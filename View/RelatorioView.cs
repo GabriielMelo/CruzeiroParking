@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace PrototipoProjetoInterdisciplinar.View
 {
-    public partial class Pagamento : Form
+    public partial class RelatorioView : Form
     {
-        public Pagamento()
+        public RelatorioView()
         {
             InitializeComponent();
         }

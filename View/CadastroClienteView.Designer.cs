@@ -52,7 +52,7 @@
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             label4.ForeColor = Color.Black;
-            label4.Location = new Point(72, 75);
+            label4.Location = new Point(33, 79);
             label4.Name = "label4";
             label4.Size = new Size(167, 15);
             label4.TabIndex = 26;
@@ -62,7 +62,7 @@
             // 
             txtNome.Anchor = AnchorStyles.None;
             txtNome.BorderStyle = BorderStyle.None;
-            txtNome.Location = new Point(74, 71);
+            txtNome.Location = new Point(35, 75);
             txtNome.Name = "txtNome";
             txtNome.PlaceholderText = "Nome Completo";
             txtNome.Size = new Size(167, 16);
@@ -73,7 +73,7 @@
             // 
             txtDocumento.Anchor = AnchorStyles.None;
             txtDocumento.BorderStyle = BorderStyle.None;
-            txtDocumento.Location = new Point(74, 107);
+            txtDocumento.Location = new Point(35, 111);
             txtDocumento.Name = "txtDocumento";
             txtDocumento.PlaceholderText = "Documento";
             txtDocumento.Size = new Size(167, 16);
@@ -86,7 +86,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             label1.ForeColor = Color.Black;
-            label1.Location = new Point(72, 111);
+            label1.Location = new Point(33, 115);
             label1.Name = "label1";
             label1.Size = new Size(167, 15);
             label1.TabIndex = 28;
@@ -96,7 +96,7 @@
             // 
             txtEndereco.Anchor = AnchorStyles.None;
             txtEndereco.BorderStyle = BorderStyle.None;
-            txtEndereco.Location = new Point(74, 145);
+            txtEndereco.Location = new Point(35, 149);
             txtEndereco.Name = "txtEndereco";
             txtEndereco.PlaceholderText = "Endereço ";
             txtEndereco.Size = new Size(167, 16);
@@ -109,7 +109,7 @@
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             label3.ForeColor = Color.Black;
-            label3.Location = new Point(72, 149);
+            label3.Location = new Point(33, 153);
             label3.Name = "label3";
             label3.Size = new Size(167, 15);
             label3.TabIndex = 30;
@@ -119,7 +119,7 @@
             // 
             txtTelefone.Anchor = AnchorStyles.None;
             txtTelefone.BorderStyle = BorderStyle.None;
-            txtTelefone.Location = new Point(74, 185);
+            txtTelefone.Location = new Point(35, 189);
             txtTelefone.Name = "txtTelefone";
             txtTelefone.PlaceholderText = "Telefone";
             txtTelefone.Size = new Size(167, 16);
@@ -132,7 +132,7 @@
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             label5.ForeColor = Color.Black;
-            label5.Location = new Point(72, 189);
+            label5.Location = new Point(33, 193);
             label5.Name = "label5";
             label5.Size = new Size(167, 15);
             label5.TabIndex = 32;
@@ -142,7 +142,7 @@
             // 
             txtModeloCarro.Anchor = AnchorStyles.None;
             txtModeloCarro.BorderStyle = BorderStyle.None;
-            txtModeloCarro.Location = new Point(298, 75);
+            txtModeloCarro.Location = new Point(259, 79);
             txtModeloCarro.Name = "txtModeloCarro";
             txtModeloCarro.PlaceholderText = "Modelo do Carro";
             txtModeloCarro.Size = new Size(167, 16);
@@ -155,7 +155,7 @@
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             label6.ForeColor = Color.Black;
-            label6.Location = new Point(296, 79);
+            label6.Location = new Point(257, 83);
             label6.Name = "label6";
             label6.Size = new Size(167, 15);
             label6.TabIndex = 34;
@@ -165,7 +165,7 @@
             // 
             txtPlacaCarro.Anchor = AnchorStyles.None;
             txtPlacaCarro.BorderStyle = BorderStyle.None;
-            txtPlacaCarro.Location = new Point(298, 113);
+            txtPlacaCarro.Location = new Point(259, 117);
             txtPlacaCarro.Name = "txtPlacaCarro";
             txtPlacaCarro.PlaceholderText = "Placa do Carro";
             txtPlacaCarro.Size = new Size(167, 16);
@@ -178,7 +178,7 @@
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             label7.ForeColor = Color.Black;
-            label7.Location = new Point(296, 117);
+            label7.Location = new Point(257, 121);
             label7.Name = "label7";
             label7.Size = new Size(167, 15);
             label7.TabIndex = 36;
@@ -192,7 +192,7 @@
             btnCadastroclt.FlatStyle = FlatStyle.Popup;
             btnCadastroclt.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnCadastroclt.ForeColor = Color.White;
-            btnCadastroclt.Location = new Point(375, 189);
+            btnCadastroclt.Location = new Point(336, 193);
             btnCadastroclt.Name = "btnCadastroclt";
             btnCadastroclt.Size = new Size(88, 23);
             btnCadastroclt.TabIndex = 38;
@@ -218,9 +218,9 @@
             panel1.Controls.Add(txtNome);
             panel1.Controls.Add(label1);
             panel1.Controls.Add(label4);
-            panel1.Location = new Point(12, 43);
+            panel1.Location = new Point(52, 33);
             panel1.Name = "panel1";
-            panel1.Size = new Size(523, 253);
+            panel1.Size = new Size(465, 253);
             panel1.TabIndex = 39;
             // 
             // label2
@@ -228,7 +228,7 @@
             label2.AutoSize = true;
             label2.BackColor = Color.White;
             label2.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(170, 22);
+            label2.Location = new Point(160, 26);
             label2.Name = "label2";
             label2.Size = new Size(182, 20);
             label2.TabIndex = 39;

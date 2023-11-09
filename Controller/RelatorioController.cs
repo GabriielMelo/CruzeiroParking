@@ -1,5 +1,4 @@
 ﻿using MySql.Data.MySqlClient;
-using PrototipoProjetoInterdisciplinar.Controllers;
 using PrototipoProjetoInterdisciplinar.Model;
 using System;
 using System.Collections.Generic;
@@ -13,7 +12,7 @@ namespace PrototipoProjetoInterdisciplinar.Controller
     {
 
 
-        ConexaoBDModel conn = new();
+        ConexaoBDController conn = new();
 
 
         public RelatorioModel DadosCliente(int idCliente)

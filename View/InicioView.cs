@@ -21,6 +21,13 @@ namespace PrototipoProjetoInterdisciplinar.Views
             txtConsultarVagas.Hide();
             txtRelatorios.Hide();
             txtPagamentos.Hide();
+            VagaView consultaVaga = new VagaView();
+            consultaVaga.TopLevel = false;
+            splitContainer2.Panel2.Controls.Clear();
+            splitContainer2.Panel2.Controls.Add(consultaVaga);
+            consultaVaga.Dock = DockStyle.Fill;
+            consultaVaga.Show();
+
         }
 
         private void btnSair_Click(object sender, EventArgs e)
@@ -84,7 +91,7 @@ namespace PrototipoProjetoInterdisciplinar.Views
             txtConsultarVagas.Hide();
             txtRelatorios.Show();
             txtPagamentos.Hide();
-            Relatorio relatorio = new Relatorio();
+            RelatorioView relatorio = new RelatorioView();
             relatorio.TopLevel = false;
             splitContainer2.Panel2.Controls.Clear();
             splitContainer2.Panel2.Controls.Add(relatorio);
@@ -99,7 +106,7 @@ namespace PrototipoProjetoInterdisciplinar.Views
             txtConsultarVagas.Hide();
             txtRelatorios.Hide();
             txtPagamentos.Show();
-            Pagamento pagamento = new Pagamento();
+            PagamentoView pagamento = new PagamentoView();
             pagamento.TopLevel = false;
             splitContainer2.Panel2.Controls.Clear();
             splitContainer2.Panel2.Controls.Add(pagamento);

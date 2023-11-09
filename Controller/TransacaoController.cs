@@ -13,7 +13,7 @@ namespace PrototipoProjetoInterdisciplinar.Controller
 {
     public class TransacaoController
     {
-        ConexaoBDModel conn = new();
+        ConexaoBDController conn = new();
         public bool EfetuarTransacao(ClienteModel cliente)
         {
             try

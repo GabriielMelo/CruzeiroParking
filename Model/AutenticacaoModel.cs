@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using PrototipoProjetoInterdisciplinar.Controller;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ namespace PrototipoProjetoInterdisciplinar.Controllers
 {
     public class AutenticacaoModel
     {
-        ConexaoBDModel conn = new ConexaoBDModel();
+        ConexaoBDController conn = new ConexaoBDController();
 
         private string usuario;
         private string senha;

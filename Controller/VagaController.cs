@@ -1,7 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
-using PrototipoProjetoInterdisciplinar.Controllers;
 using PrototipoProjetoInterdisciplinar.Model;
-using PrototipoProjetoInterdisciplinar.View; 
+using PrototipoProjetoInterdisciplinar.View;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -15,7 +14,7 @@ namespace PrototipoProjetoInterdisciplinar.Controller
     {
         private VagaModel vagaModel;
         private VagaView vagaView;
-        ConexaoBDModel conn = new();
+        ConexaoBDController conn = new();
         public VagaController(VagaView view)
         {
             vagaModel = new VagaModel();

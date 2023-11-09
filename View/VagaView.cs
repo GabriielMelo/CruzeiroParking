@@ -27,8 +27,8 @@ namespace PrototipoProjetoInterdisciplinar.View
 
         }
 
-            private void vaga1_Click(object sender, EventArgs e)
-            {
+        private void vaga1_Click(object sender, EventArgs e)
+        {
             CadastroClienteController cdCliente = new();
             TransacaoController transacao = new();
             TransacaoModel dadosTransacao = new();
@@ -37,20 +37,21 @@ namespace PrototipoProjetoInterdisciplinar.View
             RelatorioController dadosCliente = new();
             RelatorioModel relatorio = new();
 
-                DialogResult result = MessageBox.Show("Cliente possui Cadastro?", "Confirmação",
-                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (result == DialogResult.Yes)
+            DialogResult result = MessageBox.Show("Cliente possui Cadastro?", "Confirmação",
+            MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                string nomeCadastrado = Microsoft.VisualBasic.Interaction.InputBox("Digite o nome do cliente:", "Nome do Cliente");
+                if (!string.IsNullOrEmpty(nomeCadastrado))
                 {
-                    string nomeCadastrado = Microsoft.VisualBasic.Interaction.InputBox("Digite o nome do cliente:", "Nome do Cliente");
-                    if (!string.IsNullOrEmpty(nomeCadastrado))
-                    {
-                        cliente = cdCliente.BuscarClientePorNome(nomeCadastrado);
+                    cliente = cdCliente.BuscarClientePorNome(nomeCadastrado);
 
-                        if (cliente != null)
-                        {
+                    if (cliente != null)
+                    {
                         transacao.EfetuarTransacao(cliente);
                         relatorio = dadosCliente.DadosCliente(cliente.Id);
-                        if(relatorio != null) { 
+                        if (relatorio != null)
+                        {
                             bool vagaok = vagas.ConfirmarReserva(1);
                             if (vagaok)
                             {
@@ -64,11 +65,6 @@ namespace PrototipoProjetoInterdisciplinar.View
                                 vagas.AtualizarInterfaceButtons();
                             }
                         }
-                        }
-                        else
-                        {
-                            MessageBox.Show("Cliente não localizado", "Erro");
-                        }
                     }
                     else
                     {
@@ -77,11 +73,16 @@ namespace PrototipoProjetoInterdisciplinar.View
                 }
                 else
                 {
-                    MessageBox.Show("Efetue o cadastro do cliente para prosseguir", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Cliente não localizado", "Erro");
                 }
-
-
             }
+            else
+            {
+                MessageBox.Show("Efetue o cadastro do cliente para prosseguir", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+
+        }
 
         private void vaga2_Click(object sender, EventArgs e)
         {
@@ -1172,6 +1173,8 @@ namespace PrototipoProjetoInterdisciplinar.View
 
 
         }
+
+
     }
 
 }
