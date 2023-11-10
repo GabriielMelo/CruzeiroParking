@@ -14,24 +14,20 @@ namespace PrototipoProjetoInterdisciplinar.Controller
     {
         ConexaoBDController conn = new();
 
-        public double calcularValorReserva(RelatorioModel dadosCliente )
+        public double calcularValorReserva(RelatorioModel dadosCliente)
         {
-            
             try
             {
                 conn.Conectar();
 
                 string sql = "UPDATE transacoes SET valor = @valor WHERE cod_transacao = @cod_transacao";
 
-                DateTime data = new();
-                DateTime dataReserva = new();
-                double valorPagamento;
-                dataReserva = DateTime.ParseExact(dadosCliente.DataTransacao, "yyyy/MM/dd HH", null);
-                double horaAtual = data.Hour;
+                DateTime dataReserva = DateTime.ParseExact(dadosCliente.DataTransacao, "yyyy/MM/dd HH", null);
+                double horaAtual = DateTime.Now.Hour; 
                 double horaReserva = dataReserva.Hour;
-                valorPagamento = (horaReserva - horaAtual) * 8.0;
+                double valorPagamento = (horaAtual - horaReserva) * 8.0;
 
-                MySqlCommand command = new(sql, conn.ObterConexao());
+                MySqlCommand command = new MySqlCommand(sql, conn.ObterConexao());
 
                 command.Parameters.AddWithValue("@valor", valorPagamento);
                 command.Parameters.AddWithValue("@cod_transacao", dadosCliente.Cod_transacao);
@@ -40,23 +36,25 @@ namespace PrototipoProjetoInterdisciplinar.Controller
 
                 return valorPagamento;
 
-            } catch (FormatException ex)
+            }
+            catch (FormatException ex)
             {
                 MessageBox.Show("Erro ao recuperar a data", ex.Message);
                 return 0.0;
-            } finally
+            }
+            finally
             {
                 conn.FecharConexao();
             }
-            
         }
 
-        public PagamentoModel CadastrarTransacao(double valorTransacao,string cartao)
+        public PagamentoModel CadastrarTransacao(double valorTransacao,string cartao,string pagamento)
         {
             int cod_transacao = GerarCodTransacao();
 
             PagamentoModel dadosTransacao = new()
             {
+                FormaPagamento = pagamento,
                 Autorizado = true,
                 Descricao = "Pagamento realizado com Sucesso!",
                 ValorTotal = valorTransacao,

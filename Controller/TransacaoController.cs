@@ -110,7 +110,7 @@ namespace PrototipoProjetoInterdisciplinar.Controller
                 System.Diagnostics.Process.Start(localComprovante);
             } catch(Exception ex)
             {
-                MessageBox.Show("Erro ao abrir o arquivo", ex.Message);
+                MessageBox.Show("Erro ao abrir o arquivo" + ex.Message, ex.Message);
                 File.WriteAllBytes(dlComprovante, package.GetAsByteArray());
                 SaveFileDialog download = new();
                 download.Filter = "Arquivos Excel (*.xlsx)|*.xlsx";

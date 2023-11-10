@@ -49,6 +49,7 @@
             txtCodigoTransacao = new TextBox();
             txtNome = new TextBox();
             lblTraco = new Label();
+            lblTextoCod = new Label();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -56,6 +57,7 @@
             // 
             panel1.Anchor = AnchorStyles.None;
             panel1.BackColor = Color.White;
+            panel1.Controls.Add(lblTextoCod);
             panel1.Controls.Add(lblValorTotal);
             panel1.Controls.Add(label);
             panel1.Controls.Add(btnBuscarCod);
@@ -117,6 +119,7 @@
             btnBuscarCod.TabIndex = 49;
             btnBuscarCod.Text = "Buscar";
             btnBuscarCod.UseVisualStyleBackColor = false;
+            btnBuscarCod.Click += btnBuscarCod_Click;
             // 
             // label2
             // 
@@ -246,11 +249,12 @@
             // 
             cbPagamento.DropDownStyle = ComboBoxStyle.DropDownList;
             cbPagamento.FormattingEnabled = true;
-            cbPagamento.Items.AddRange(new object[] { "Selecione", "Débito", "Crédito" });
+            cbPagamento.Items.AddRange(new object[] { "Débito", "Crédito" });
             cbPagamento.Location = new Point(342, 70);
             cbPagamento.Name = "cbPagamento";
             cbPagamento.Size = new Size(132, 23);
             cbPagamento.TabIndex = 37;
+            cbPagamento.SelectedIndexChanged += cbPagamento_SelectedIndexChanged;
             // 
             // btnBuscarNome
             // 
@@ -272,7 +276,7 @@
             // 
             cbModoBusca.DropDownStyle = ComboBoxStyle.DropDownList;
             cbModoBusca.FormattingEnabled = true;
-            cbModoBusca.Items.AddRange(new object[] { "Selecione", "Nome", "Codigo da transação" });
+            cbModoBusca.Items.AddRange(new object[] { "Nome", "Codigo da transação" });
             cbModoBusca.Location = new Point(77, 70);
             cbModoBusca.Name = "cbModoBusca";
             cbModoBusca.Size = new Size(132, 23);
@@ -314,6 +318,15 @@
             lblTraco.TabIndex = 33;
             lblTraco.Text = "_______________________";
             // 
+            // lblTextoCod
+            // 
+            lblTextoCod.AutoSize = true;
+            lblTextoCod.Location = new Point(60, 202);
+            lblTextoCod.Name = "lblTextoCod";
+            lblTextoCod.Size = new Size(178, 30);
+            lblTextoCod.TabIndex = 52;
+            lblTextoCod.Text = "* Codigo da Transação consta\r\n em seu comprovante de reserva";
+            // 
             // PagamentoView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -353,5 +366,6 @@
         private Button btnBuscarCod;
         private Label lblValorTotal;
         private Label label;
+        private Label lblTextoCod;
     }
 }

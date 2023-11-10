@@ -8,6 +8,7 @@ namespace PrototipoProjetoInterdisciplinar.Model
 {
     public class PagamentoModel
     {
+        private string formaPagamento;
         private bool autorizado;
         private string? descricao;
         private double valorTotal;
@@ -17,13 +18,21 @@ namespace PrototipoProjetoInterdisciplinar.Model
 
         public PagamentoModel() { }
 
-        public PagamentoModel(bool autorizado, string? descricao, double valorTotal, string cartao, int cod_transacaoPagamento)
+        public PagamentoModel(string formaPagamento,bool autorizado, string?
+            descricao, double valorTotal, string cartao, int cod_transacaoPagamento)
         {
+            this.formaPagamento = formaPagamento;
             this.autorizado = autorizado;
             this.descricao = descricao;
             this.valorTotal = valorTotal;
             this.cartao = cartao;
             this.cod_transacaoPagamento = cod_transacaoPagamento;
+        }
+
+        public string FormaPagamento
+        {
+            get { return formaPagamento; }
+            set { formaPagamento = value;}
         }
 
         public bool Autorizado
@@ -49,8 +58,10 @@ namespace PrototipoProjetoInterdisciplinar.Model
             get { return cod_transacaoPagamento; }
             set { cod_transacaoPagamento = value; }
         }
-        public void DefinirDados(bool autorizado,string descricao,double valorTotal,string cartao,int cod_transacaoPagamento)
+        public void DefinirDados(string formaPagamento,bool autorizado,string descricao,
+            double valorTotal,string cartao,int cod_transacaoPagamento)
         {
+            FormaPagamento = formaPagamento;
             Autorizado = autorizado;
             Descricao = descricao;
             ValorTotal = valorTotal;

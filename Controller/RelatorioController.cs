@@ -80,7 +80,7 @@ namespace PrototipoProjetoInterdisciplinar.Controller
                     commandCliente.Parameters.AddWithValue("@nome", "%" + nome + "%");
                     MySqlDataReader readerCliente = commandCliente.ExecuteReader();
 
-                    RelatorioModel dadosCliente = new RelatorioModel();
+                    RelatorioModel dadosCliente = new();
 
                     if (readerCliente.Read())
                     {
@@ -129,40 +129,62 @@ namespace PrototipoProjetoInterdisciplinar.Controller
             {
                 conn.Conectar();
 
-                string sqlCliente = "SELECT * FROM clientes WHERE cod_transacao = @cod";
-                MySqlCommand commandCliente = new MySqlCommand(sqlCliente, conn.ObterConexao());
-                commandCliente.Parameters.AddWithValue("@cod_transacao",cod);
-                MySqlDataReader readerCliente = commandCliente.ExecuteReader();
-
                 RelatorioModel dadosCliente = new RelatorioModel();
 
-                if (readerCliente.Read())
-                {
-                    dadosCliente.Id = (int)readerCliente["id"];
-                    dadosCliente.Nome = readerCliente["nome"].ToString();
-                    dadosCliente.Endereco = readerCliente["endereco"].ToString();
-                    dadosCliente.Telefone = readerCliente["telefone"].ToString();
-                    dadosCliente.Documento = readerCliente["documento"].ToString();
-                    dadosCliente.ModeloCarro = readerCliente["modeloCarro"].ToString();
-                    dadosCliente.PlacaCarro = readerCliente["placaCarro"].ToString();
-                }
-
-                readerCliente.Close();
-
-
-                string sqlTransacao = "SELECT * FROM transacoes WHERE ID_CLIENTE = @id";
+                string sqlTransacao = "SELECT id_cliente FROM transacoes WHERE cod_transacao = @cod";
                 MySqlCommand commandTransacao = new MySqlCommand(sqlTransacao, conn.ObterConexao());
-                commandTransacao.Parameters.AddWithValue("@id", dadosCliente.Id);
-                MySqlDataReader readerTransacao = commandTransacao.ExecuteReader();
+                commandTransacao.Parameters.AddWithValue("@cod", cod);
 
+                int id = 0;
+
+                MySqlDataReader readerTransacao = commandTransacao.ExecuteReader();
                 if (readerTransacao.Read())
                 {
-                    dadosCliente.DataTransacao = readerTransacao["data_transacao"].ToString();
-                    dadosCliente.Cod_transacao = readerTransacao["cod_transacao"].ToString();
-                    dadosCliente.Descricao = readerTransacao["descricao"].ToString();
+                    id = (int)readerTransacao["id_cliente"];
+                }
+                readerTransacao.Close();
+
+                if (id > 0)
+                {
+                    string sqlCliente = "SELECT * FROM clientes WHERE id = @id";
+                    MySqlCommand commandCliente = new MySqlCommand(sqlCliente, conn.ObterConexao());
+                    commandCliente.Parameters.AddWithValue("@id", id);
+                    MySqlDataReader readerCliente = commandCliente.ExecuteReader();
+
+                    if (readerCliente.Read())
+                    {
+                        dadosCliente.Id = (int)readerCliente["id"];
+                        dadosCliente.Nome = readerCliente["nome"].ToString();
+                        dadosCliente.Endereco = readerCliente["endereco"].ToString();
+                        dadosCliente.Telefone = readerCliente["telefone"].ToString();
+                        dadosCliente.Documento = readerCliente["documento"].ToString();
+                        dadosCliente.ModeloCarro = readerCliente["modeloCarro"].ToString();
+                        dadosCliente.PlacaCarro = readerCliente["placaCarro"].ToString();
+                    }
+                    readerCliente.Close();
+
+                    sqlTransacao = "SELECT * FROM transacoes WHERE ID_CLIENTE = @id";
+                    commandTransacao = new MySqlCommand(sqlTransacao, conn.ObterConexao());
+                    commandTransacao.Parameters.AddWithValue("@id", dadosCliente.Id);
+                    readerTransacao = commandTransacao.ExecuteReader();
+
+                    if (readerTransacao.Read())
+                    {
+                        DateTime dataTransacao = readerTransacao.GetDateTime("data_transacao");
+                        dadosCliente.DataTransacao = dataTransacao.ToString("yyyy/MM/dd HH");
+                        dadosCliente.Cod_transacao = readerTransacao["cod_transacao"].ToString();
+                        dadosCliente.Descricao = readerTransacao["descricao"].ToString();
+                    }
+
+                    readerTransacao.Close();
+                }
+                else
+                {
+                    return null; 
                 }
 
-                return dadosCliente;
+                return dadosCliente; 
+
             }
             catch (Exception ex)
             {
