@@ -49,7 +49,7 @@ namespace PrototipoProjetoInterdisciplinar.View
                     if (cliente != null)
                     {
                         transacao.EfetuarTransacao(cliente);
-                        relatorio = dadosCliente.DadosCliente(cliente.Id);
+                        relatorio = dadosCliente.ObterDadosCliente(cliente.Id);
                         if (relatorio != null)
                         {
                             bool vagaok = vagas.ConfirmarReserva(1);
@@ -106,7 +106,7 @@ namespace PrototipoProjetoInterdisciplinar.View
                     if (cliente != null)
                     {
                         transacao.EfetuarTransacao(cliente);
-                        relatorio = dadosCliente.DadosCliente(cliente.Id);
+                        relatorio = dadosCliente.ObterDadosCliente(cliente.Id);
                         if (relatorio != null)
                         {
                             bool vagaok = vagas.ConfirmarReserva(2);
@@ -164,7 +164,7 @@ namespace PrototipoProjetoInterdisciplinar.View
                     if (cliente != null)
                     {
                         transacao.EfetuarTransacao(cliente);
-                        relatorio = dadosCliente.DadosCliente(cliente.Id);
+                        relatorio = dadosCliente.ObterDadosCliente(cliente.Id);
                         if (relatorio != null)
                         {
                             bool vagaok = vagas.ConfirmarReserva(3);
@@ -221,7 +221,7 @@ namespace PrototipoProjetoInterdisciplinar.View
                     if (cliente != null)
                     {
                         transacao.EfetuarTransacao(cliente);
-                        relatorio = dadosCliente.DadosCliente(cliente.Id);
+                        relatorio = dadosCliente.ObterDadosCliente(cliente.Id);
                         if (relatorio != null)
                         {
                             bool vagaok = vagas.ConfirmarReserva(4);
@@ -278,7 +278,7 @@ namespace PrototipoProjetoInterdisciplinar.View
                     if (cliente != null)
                     {
                         transacao.EfetuarTransacao(cliente);
-                        relatorio = dadosCliente.DadosCliente(cliente.Id);
+                        relatorio = dadosCliente.ObterDadosCliente(cliente.Id);
                         if (relatorio != null)
                         {
                             bool vagaok = vagas.ConfirmarReserva(5);
@@ -336,7 +336,7 @@ namespace PrototipoProjetoInterdisciplinar.View
                     if (cliente != null)
                     {
                         transacao.EfetuarTransacao(cliente);
-                        relatorio = dadosCliente.DadosCliente(cliente.Id);
+                        relatorio = dadosCliente.ObterDadosCliente(cliente.Id);
                         if (relatorio != null)
                         {
                             bool vagaok = vagas.ConfirmarReserva(6);
@@ -394,7 +394,7 @@ namespace PrototipoProjetoInterdisciplinar.View
                     if (cliente != null)
                     {
                         transacao.EfetuarTransacao(cliente);
-                        relatorio = dadosCliente.DadosCliente(cliente.Id);
+                        relatorio = dadosCliente.ObterDadosCliente(cliente.Id);
                         if (relatorio != null)
                         {
                             bool vagaok = vagas.ConfirmarReserva(7);
@@ -451,7 +451,7 @@ namespace PrototipoProjetoInterdisciplinar.View
                     if (cliente != null)
                     {
                         transacao.EfetuarTransacao(cliente);
-                        relatorio = dadosCliente.DadosCliente(cliente.Id);
+                        relatorio = dadosCliente.ObterDadosCliente(cliente.Id);
                         if (relatorio != null)
                         {
                             bool vagaok = vagas.ConfirmarReserva(8);
@@ -509,7 +509,7 @@ namespace PrototipoProjetoInterdisciplinar.View
                     if (cliente != null)
                     {
                         transacao.EfetuarTransacao(cliente);
-                        relatorio = dadosCliente.DadosCliente(cliente.Id);
+                        relatorio = dadosCliente.ObterDadosCliente(cliente.Id);
                         if (relatorio != null)
                         {
                             bool vagaok = vagas.ConfirmarReserva(9);
@@ -567,7 +567,7 @@ namespace PrototipoProjetoInterdisciplinar.View
                     if (cliente != null)
                     {
                         transacao.EfetuarTransacao(cliente);
-                        relatorio = dadosCliente.DadosCliente(cliente.Id);
+                        relatorio = dadosCliente.ObterDadosCliente(cliente.Id);
                         if (relatorio != null)
                         {
                             bool vagaok = vagas.ConfirmarReserva(10);
@@ -625,7 +625,7 @@ namespace PrototipoProjetoInterdisciplinar.View
                     if (cliente != null)
                     {
                         transacao.EfetuarTransacao(cliente);
-                        relatorio = dadosCliente.DadosCliente(cliente.Id);
+                        relatorio = dadosCliente.ObterDadosCliente(cliente.Id);
                         if (relatorio != null)
                         {
                             bool vagaok = vagas.ConfirmarReserva(11);
@@ -682,7 +682,7 @@ namespace PrototipoProjetoInterdisciplinar.View
                     if (cliente != null)
                     {
                         transacao.EfetuarTransacao(cliente);
-                        relatorio = dadosCliente.DadosCliente(cliente.Id);
+                        relatorio = dadosCliente.ObterDadosCliente(cliente.Id);
                         if (relatorio != null)
                         {
                             bool vagaok = vagas.ConfirmarReserva(12);
@@ -739,7 +739,7 @@ namespace PrototipoProjetoInterdisciplinar.View
                     if (cliente != null)
                     {
                         transacao.EfetuarTransacao(cliente);
-                        relatorio = dadosCliente.DadosCliente(cliente.Id);
+                        relatorio = dadosCliente.ObterDadosCliente(cliente.Id);
                         if (relatorio != null)
                         {
                             bool vagaok = vagas.ConfirmarReserva(13);
@@ -796,7 +796,7 @@ namespace PrototipoProjetoInterdisciplinar.View
                     if (cliente != null)
                     {
                         transacao.EfetuarTransacao(cliente);
-                        relatorio = dadosCliente.DadosCliente(cliente.Id);
+                        relatorio = dadosCliente.ObterDadosCliente(cliente.Id);
                         if (relatorio != null)
                         {
                             bool vagaok = vagas.ConfirmarReserva(14);
@@ -853,7 +853,7 @@ namespace PrototipoProjetoInterdisciplinar.View
                     if (cliente != null)
                     {
                         transacao.EfetuarTransacao(cliente);
-                        relatorio = dadosCliente.DadosCliente(cliente.Id);
+                        relatorio = dadosCliente.ObterDadosCliente(cliente.Id);
                         if (relatorio != null)
                         {
                             bool vagaok = vagas.ConfirmarReserva(15);
@@ -910,7 +910,7 @@ namespace PrototipoProjetoInterdisciplinar.View
                     if (cliente != null)
                     {
                         transacao.EfetuarTransacao(cliente);
-                        relatorio = dadosCliente.DadosCliente(cliente.Id);
+                        relatorio = dadosCliente.ObterDadosCliente(cliente.Id);
                         if (relatorio != null)
                         {
                             bool vagaok = vagas.ConfirmarReserva(16);
@@ -968,7 +968,7 @@ namespace PrototipoProjetoInterdisciplinar.View
                     if (cliente != null)
                     {
                         transacao.EfetuarTransacao(cliente);
-                        relatorio = dadosCliente.DadosCliente(cliente.Id);
+                        relatorio = dadosCliente.ObterDadosCliente(cliente.Id);
                         if (relatorio != null)
                         {
                             bool vagaok = vagas.ConfirmarReserva(17);
@@ -1025,7 +1025,7 @@ namespace PrototipoProjetoInterdisciplinar.View
                     if (cliente != null)
                     {
                         transacao.EfetuarTransacao(cliente);
-                        relatorio = dadosCliente.DadosCliente(cliente.Id);
+                        relatorio = dadosCliente.ObterDadosCliente(cliente.Id);
                         if (relatorio != null)
                         {
                             bool vagaok = vagas.ConfirmarReserva(18);
@@ -1082,7 +1082,7 @@ namespace PrototipoProjetoInterdisciplinar.View
                     if (cliente != null)
                     {
                         transacao.EfetuarTransacao(cliente);
-                        relatorio = dadosCliente.DadosCliente(cliente.Id);
+                        relatorio = dadosCliente.ObterDadosCliente(cliente.Id);
                         if (relatorio != null)
                         {
                             bool vagaok = vagas.ConfirmarReserva(19);
@@ -1139,7 +1139,7 @@ namespace PrototipoProjetoInterdisciplinar.View
                     if (cliente != null)
                     {
                         transacao.EfetuarTransacao(cliente);
-                        relatorio = dadosCliente.DadosCliente(cliente.Id);
+                        relatorio = dadosCliente.ObterDadosCliente(cliente.Id);
                         if (relatorio != null)
                         {
                             bool vagaok = vagas.ConfirmarReserva(20);

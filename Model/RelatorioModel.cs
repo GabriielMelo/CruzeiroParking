@@ -8,6 +8,7 @@ namespace PrototipoProjetoInterdisciplinar.Model
 {
     public class RelatorioModel
     {
+        private int id;
         private string nome;
         private string endereco;
         private string telefone;
@@ -19,8 +20,10 @@ namespace PrototipoProjetoInterdisciplinar.Model
         private string descricao;
 
         public RelatorioModel() { }
-        public RelatorioModel(string nome, string endereco, string telefone, string documento,string modeloCarro, string placaCarro, string data_transacao, string cod_transacao, string descricao)
+        public RelatorioModel(string nome, string endereco, string telefone, string documento,string modeloCarro, 
+            string placaCarro, string data_transacao, string cod_transacao, string descricao,int id)
         {
+            this.id = id;
             this.nome = nome;
             this.endereco = endereco;
             this.telefone = telefone;
@@ -31,7 +34,11 @@ namespace PrototipoProjetoInterdisciplinar.Model
             this.cod_transacao = cod_transacao;
             this.descricao = descricao;
         }
-
+        public int Id
+        {
+            get { return id; }
+            set { id = value; } 
+        }
         public string Nome
         {
             get { return nome; }
@@ -79,8 +86,9 @@ namespace PrototipoProjetoInterdisciplinar.Model
         }
 
         public void DefinirDados(string nome, string endereco, string telefone, string documento, string modeloCarro, 
-            string placaCarro, string data_transacao, string cod_transacao, string descricao)
+            string placaCarro, string data_transacao, string cod_transacao, string descricao,int id)
         {
+            Id = id;
             Nome = nome;
             Endereco = endereco;
             Telefone = telefone;
