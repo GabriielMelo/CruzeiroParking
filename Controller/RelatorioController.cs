@@ -1,8 +1,12 @@
 ﻿using MySql.Data.MySqlClient;
 using OfficeOpenXml;
+using OfficeOpenXml.Style;
 using PrototipoProjetoInterdisciplinar.Model;
+using PrototipoProjetoInterdisciplinar.View;
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -197,23 +201,23 @@ namespace PrototipoProjetoInterdisciplinar.Controller
             }
         }
 
-        public void ComprovanteTransacao(RelatorioModel relatorio,PagamentoModel pagamento)
+        public void GerarComprovante(RelatorioModel relatorio)
         {
             string localComprovante = "";
             string dlComprovante = Path.GetTempFileName();
-            FileInfo comprovante = new("ComprovantePagamento.xlsx");
+            FileInfo comprovante = new("ComprovanteReserva.xlsx");
 
             if (comprovante.Exists)
             {
                 comprovante.Delete();
-                comprovante = new FileInfo("ComprovantePagamento.xlsx");
+                comprovante = new FileInfo("ComprovanteReserva.xlsx");
             }
 
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
             ExcelPackage package = new(comprovante);
             ExcelWorksheet worksheet = package.Workbook.Worksheets.Add("Comprovante");
 
-            worksheet.Cells["A1"].Value = "Comprovante de Pagamento";
+            worksheet.Cells["A1"].Value = "Comprovante de Reserva";
             worksheet.Cells["A3"].Value = "Nome do Cliente:";
             worksheet.Cells["C3"].Value = relatorio.Nome;
             worksheet.Cells["A4"].Value = "Modelo do Carro:";
@@ -233,7 +237,7 @@ namespace PrototipoProjetoInterdisciplinar.Controller
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Erro ao abrir o arquivo", ex.Message);
+                MessageBox.Show("Erro ao abrir o arquivo" + ex.Message, ex.Message);
                 File.WriteAllBytes(dlComprovante, package.GetAsByteArray());
                 SaveFileDialog download = new();
                 download.Filter = "Arquivos Excel (*.xlsx)|*.xlsx";
@@ -249,8 +253,188 @@ namespace PrototipoProjetoInterdisciplinar.Controller
             {
 
             }
+        }
+
+        public void ComprovanteTransacao(RelatorioModel relatorio,PagamentoModel pagamento)
+        {
+            string localComprovante = "";
+            string dlComprovante = Path.GetTempFileName();
+            FileInfo comprovante = new("ComprovantePagamento.xlsx");
+
+            if (comprovante.Exists)
+            {
+                comprovante.Delete();
+                comprovante = new FileInfo("ComprovantePagamento.xlsx");
+            }
+            DateTime dataTransacao = DateTime.ParseExact(relatorio.DataTransacao, "yyyy/MM/dd HH", CultureInfo.InvariantCulture);
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+            ExcelPackage package = new(comprovante);
+            ExcelWorksheet worksheet = package.Workbook.Worksheets.Add("Comprovante");
+
+            string valorConvertido ="R$ " + pagamento.ValorTotal.ToString() + ",00";
+            string autorizacao = pagamento.Autorizado == true ? autorizacao = "Autorizado" : autorizacao = "Não Autorizado";
+
+            worksheet.Cells["A1"].Value = "Comprovante de Pagamento";
+            worksheet.Cells["A3"].Value = "Nome do Cliente:";
+            worksheet.Cells["C3"].Value = relatorio.Nome;
+            worksheet.Cells["A4"].Value = "Modelo do Carro:";
+            worksheet.Cells["C4"].Value = relatorio.ModeloCarro;
+            worksheet.Cells["A5"].Value = "Placa do Carro:";
+            worksheet.Cells["C5"].Value = relatorio.PlacaCarro;
+            worksheet.Cells["A6"].Value = "Data da reserva:";
+            worksheet.Cells["C6"].Value = dataTransacao.ToString("dd/MM/yyyy HH:MM");
+            worksheet.Cells["A7"].Value = "Código da reserva:";
+            worksheet.Cells["C7"].Value = relatorio.Cod_transacao;
+            worksheet.Cells["A8"].Value = "Valor: ";
+            worksheet.Cells["C8"].Value = valorConvertido;
+            worksheet.Cells["A9"].Value = "Pagamento";
+            worksheet.Cells["C9"].Value = autorizacao;
+            worksheet.Cells["A10"].Value = "Código da Transação:";
+            worksheet.Cells["C10"].Value = pagamento.Cod_transacaoPagamento.ToString();
+            worksheet.Cells["A11"].Value = "Cartão final : ";
+            worksheet.Cells["C11"].Value = pagamento.Cartao;
+            worksheet.Cells["A12"].Value = "Descrição: ";
+            worksheet.Cells["C12"].Value = pagamento.Descricao;
+            AjustarTamanhoColunas(worksheet);
+            FormatHeader(worksheet, "Comprovante de Pagamento");
+            try
+            {
+                package.Save();
+                localComprovante = comprovante.FullName;
+                System.Diagnostics.Process.Start(localComprovante);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao abrir o arquivo", ex.Message);
+                File.WriteAllBytes(dlComprovante, package.GetAsByteArray());
+                SaveFileDialog download = new();
+                download.Filter = "Arquivos Excel (*.xlsx)|*.xlsx";
+                download.FileName = "ComprovantePagamento.xlsx";
+                if (download.ShowDialog() == DialogResult.OK)
+                {
+                    string savePatch = download.FileName;
+                    File.Copy(dlComprovante, savePatch, true);
+                }
+               
+            }
+            finally
+            {
+
+            }
 
         }
 
+        public void RelatorioClientes(RelatorioView relatorioView)
+        {
+            ConexaoBDController conn = new();
+
+            try
+            {
+                conn.Conectar();
+
+                string sql = "SELECT * FROM CLIENTES";
+
+                MySqlDataAdapter adapter = conn.ObterAdapter(sql);
+
+                System.Data.DataTable dataTable = new System.Data.DataTable();
+                adapter.Fill(dataTable);
+
+                relatorioView.PreencherDataGridView(dataTable); 
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao consultar base de dados", ex.Message);
+            } finally
+            {
+                conn.FecharConexao();
+            }
+        }
+
+        public void RelatoriosHistoricoClientes(RelatorioView relatorioView)
+        {
+            ConexaoBDController conn = new();
+
+            try
+            {
+                conn.Conectar();
+
+                string sql = "SELECT c.nome AS 'Nome do Cliente', " +
+                    "c.documento AS 'Documento', c.endereco AS 'Endereço',\r\n  " +
+                    "  c.modeloCarro AS 'Modelo do Carro', c.telefone AS 'Telefone', c.placaCarro" +
+                    " AS 'Placa do Carro',\r\n    t.data_transacao AS 'Data da Reserva', t.descricao AS" +
+                    " 'Descrição'\r\nFROM transacoes t\r\nJOIN clientes c ON t.id_cliente = c.id\r\nORDER BY" +
+                    " t.data_transacao DESC;";
+
+                MySqlDataAdapter adapter = conn.ObterAdapter(sql);
+
+                System.Data.DataTable dataTable = new System.Data.DataTable();
+                adapter.Fill(dataTable);
+
+                relatorioView.PreencherDataGridView(dataTable);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao consultar base de dados", ex.Message);
+            }
+            finally
+            {
+                conn.FecharConexao();
+            }
+        }
+
+        public void RelatoriosFaturamentoMensal(RelatorioView relatorioView)
+        {
+            ConexaoBDController conn = new();
+
+            try
+            {
+                conn.Conectar();
+
+                string sql = "SELECT YEAR(data_transacao) AS Ano, MONTH(data_transacao) AS Mes, " +
+                    "SUM(valor) AS Faturamento\r\nFROM transacoes\r\nGROUP BY YEAR(data_transacao), " +
+                    "MONTH(data_transacao)\r\nORDER BY Ano DESC, Mes DESC;";
+
+                MySqlDataAdapter adapter = conn.ObterAdapter(sql);
+
+                System.Data.DataTable dataTable = new System.Data.DataTable();
+                adapter.Fill(dataTable);
+
+                relatorioView.PreencherDataGridView(dataTable);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao consultar base de dados", ex.Message);
+            }
+            finally
+            {
+                conn.FecharConexao();
+            }
+        }
+
+        private void AjustarTamanhoColunas(ExcelWorksheet worksheet)
+        {
+            AutoAjusteColunas(worksheet, 'A');
+            AutoAjusteColunas(worksheet, 'C');
+        }
+
+        private void AutoAjusteColunas(ExcelWorksheet worksheet, char coluna)
+        {
+            var colunaStr = coluna.ToString();
+            using ExcelRange colunas = worksheet.Cells[$"{colunaStr}:{colunaStr}"];
+            colunas.AutoFitColumns();
+        }
+
+        public void FormatHeader(ExcelWorksheet worksheet, string headerText)
+        {
+            var header = worksheet.Cells["A1:C1"];
+
+            header.Merge = true;
+            header.Style.Font.Bold = true;
+            header.Style.HorizontalAlignment = ExcelHorizontalAlignment.Left; 
+
+            worksheet.Cells["A1:C1"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Left; 
+            worksheet.Cells["A1:C1"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+            worksheet.Cells["A1"].Value = headerText;
+        }
     }
 }

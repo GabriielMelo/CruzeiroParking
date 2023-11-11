@@ -20,6 +20,7 @@ namespace PrototipoProjetoInterdisciplinar.View
         PagamentoModel ddPagamento = new();
         RelatorioController rlControl = new();
         PagamentoController pgcontrol = new();
+        VagaController vgControl = new();
         double valorTotal;
         public PagamentoView()
         {
@@ -86,7 +87,7 @@ namespace PrototipoProjetoInterdisciplinar.View
                 ddCliente = rlControl.ObterDadosCliente_Nome(nome);
                 if (ddCliente != null)
                 {
-                    DialogResult result = MessageBox.Show("Deseja encerrar reserva?",
+                    DialogResult result = MessageBox.Show("Deseja encerrar reserva de "+ ddCliente.Nome + " ?",
                         "Cliente localizado", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (result == DialogResult.Yes)
                     {
@@ -118,7 +119,7 @@ namespace PrototipoProjetoInterdisciplinar.View
             }
             else
             {
-                int cod = Convert.ToInt32(txtCodigoTransacao.Text.Trim());
+                int cod = (int)Convert.ToInt64(txtCodigoTransacao.Text.Trim());
 
                 ddCliente = rlControl.ObterDadosCliente_Cod(cod);
                 if (ddCliente != null)
@@ -173,10 +174,12 @@ namespace PrototipoProjetoInterdisciplinar.View
                     cartao = "xxxx-xxxx-xxxx-" + ocultarCartao;
                     string formaPagamento = cbPagamento.SelectedItem.ToString().Trim();
                     MessageBox.Show("Pagamento Concluído!", "Transacao OK", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    vgControl.LiberarVaga(ddCliente.Id);
                     DesativarCampos();
                     Limpar();
                     ddPagamento = pgControl.CadastrarTransacao(valorTotal, cartao, formaPagamento);
                     rlControl.ComprovanteTransacao(ddCliente, ddPagamento);
+                        
                 }
 
             }
@@ -203,6 +206,7 @@ namespace PrototipoProjetoInterdisciplinar.View
                     cartao = "xxxx-xxxx-xxxx-" + ocultarCartao;
                     string formaPagamento = cbPagamento.SelectedItem.ToString().Trim();
                     MessageBox.Show("Pagamento Concluído!", "Transacao OK", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    vgControl.LiberarVaga(ddCliente.Id);
                     ddPagamento = pgControl.CadastrarTransacao(valorTotal, cartao, formaPagamento);
                     rlControl.ComprovanteTransacao(ddCliente, ddPagamento);
                     Limpar();

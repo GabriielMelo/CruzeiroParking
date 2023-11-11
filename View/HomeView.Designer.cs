@@ -28,11 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HomeView));
             gpBox = new GroupBox();
             splitContainer1 = new SplitContainer();
             label6 = new Label();
             label7 = new Label();
             label1 = new Label();
+            linkLabel1 = new LinkLabel();
+            label2 = new Label();
             btnAcess = new Button();
             label3 = new Label();
             gpBox.SuspendLayout();
@@ -68,6 +71,8 @@
             // splitContainer1.Panel2
             // 
             splitContainer1.Panel2.BackColor = Color.Gainsboro;
+            splitContainer1.Panel2.Controls.Add(linkLabel1);
+            splitContainer1.Panel2.Controls.Add(label2);
             splitContainer1.Panel2.Controls.Add(btnAcess);
             splitContainer1.Panel2.Controls.Add(label3);
             splitContainer1.Size = new Size(654, 445);
@@ -108,6 +113,28 @@
             label1.TabIndex = 13;
             label1.Text = "label1";
             // 
+            // linkLabel1
+            // 
+            linkLabel1.Anchor = AnchorStyles.None;
+            linkLabel1.AutoSize = true;
+            linkLabel1.Location = new Point(183, 255);
+            linkLabel1.Name = "linkLabel1";
+            linkLabel1.Size = new Size(290, 15);
+            linkLabel1.TabIndex = 3;
+            linkLabel1.TabStop = true;
+            linkLabel1.Text = "https://github.com/GabriielMelo/Projeto_ADS3_GRP7";
+            linkLabel1.LinkClicked += linkLabel1_LinkClicked;
+            // 
+            // label2
+            // 
+            label2.Anchor = AnchorStyles.None;
+            label2.AutoSize = true;
+            label2.Location = new Point(32, 255);
+            label2.Name = "label2";
+            label2.Size = new Size(159, 15);
+            label2.TabIndex = 2;
+            label2.Text = "Link do Repositorio GitHub : ";
+            // 
             // btnAcess
             // 
             btnAcess.Anchor = AnchorStyles.None;
@@ -129,11 +156,11 @@
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
             label3.ForeColor = Color.Black;
-            label3.Location = new Point(76, 57);
+            label3.Location = new Point(34, 51);
             label3.Name = "label3";
-            label3.Size = new Size(312, 225);
+            label3.Size = new Size(406, 175);
             label3.TabIndex = 0;
-            label3.Text = "Projeto Interdisciplinar III Turma 7.\r\n\r\nIntegrantes : \r\n\r\nGabriel de Jesus Melo RGM 31465196\r\nWilliam Ribeiro  RGM\r\nMarcela Penna \r\nDeivirt \r\nMarcelo Santos\r\n";
+            label3.Text = resources.GetString("label3.Text");
             // 
             // HomeView
             // 
@@ -164,5 +191,7 @@
         private Label label1;
         private Button btnAcess;
         private Label label3;
+        private LinkLabel linkLabel1;
+        private Label label2;
     }
 }

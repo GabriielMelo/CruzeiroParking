@@ -17,14 +17,18 @@ namespace PrototipoProjetoInterdisciplinar.View
 {
     public partial class VagaView : Form
     {
-
+        int qtVagasDisponíveis;
+      
         public VagaView()
         {
             InitializeComponent();
             VagaController vagas = new VagaController(this);
+            VagaController consutaVaga = new();
             vagas.ConsultarVagasDisponiveis();
             vagas.AtualizarInterfaceButtons();
-
+            qtVagasDisponíveis = consutaVaga.QuantidadeVagasDisponíveis();
+            txtVagasDisponiveis.Text = qtVagasDisponíveis.ToString();
+            txtVagasIndisponiveis.Text = (20 - qtVagasDisponíveis).ToString();
         }
 
         private void vaga1_Click(object sender, EventArgs e)
@@ -58,7 +62,7 @@ namespace PrototipoProjetoInterdisciplinar.View
                                 vagas.AtualizarInterfaceButtons();
                                 vaga1.BackColor = Color.Red;
                                 vaga1.Enabled = false;
-                                transacao.GerarComprovante(relatorio);
+                                dadosCliente.GerarComprovante(relatorio);
                             }
                             else
                             {
@@ -115,7 +119,7 @@ namespace PrototipoProjetoInterdisciplinar.View
                                 vagas.AtualizarInterfaceButtons();
                                 vaga2.BackColor = Color.Red;
                                 vaga2.Enabled = false;
-                                transacao.GerarComprovante(relatorio);
+                                dadosCliente.GerarComprovante(relatorio);
                             }
                             else
                             {
@@ -173,7 +177,7 @@ namespace PrototipoProjetoInterdisciplinar.View
                                 vagas.AtualizarInterfaceButtons();
                                 vaga3.BackColor = Color.Red;
                                 vaga3.Enabled = false;
-                                transacao.GerarComprovante(relatorio);
+                                dadosCliente.GerarComprovante(relatorio);
                             }
                             else
                             {
@@ -230,7 +234,7 @@ namespace PrototipoProjetoInterdisciplinar.View
                                 vagas.AtualizarInterfaceButtons();
                                 vaga4.BackColor = Color.Red;
                                 vaga4.Enabled = false;
-                                transacao.GerarComprovante(relatorio);
+                                dadosCliente.GerarComprovante(relatorio);
                             }
                             else
                             {
@@ -287,7 +291,7 @@ namespace PrototipoProjetoInterdisciplinar.View
                                 vagas.AtualizarInterfaceButtons();
                                 vaga5.BackColor = Color.Red;
                                 vaga5.Enabled = false;
-                                transacao.GerarComprovante(relatorio);
+                                dadosCliente.GerarComprovante(relatorio);
                             }
                             else
                             {
@@ -345,7 +349,7 @@ namespace PrototipoProjetoInterdisciplinar.View
                                 vagas.AtualizarInterfaceButtons();
                                 vaga6.BackColor = Color.Red;
                                 vaga6.Enabled = false;
-                                transacao.GerarComprovante(relatorio);
+                                dadosCliente.GerarComprovante(relatorio);
                             }
                             else
                             {
@@ -403,7 +407,7 @@ namespace PrototipoProjetoInterdisciplinar.View
                                 vagas.AtualizarInterfaceButtons();
                                 vaga7.BackColor = Color.Red;
                                 vaga7.Enabled = false;
-                                transacao.GerarComprovante(relatorio);
+                                dadosCliente.GerarComprovante(relatorio);
                             }
                             else
                             {
@@ -460,7 +464,7 @@ namespace PrototipoProjetoInterdisciplinar.View
                                 vagas.AtualizarInterfaceButtons();
                                 vaga8.BackColor = Color.Red;
                                 vaga8.Enabled = false;
-                                transacao.GerarComprovante(relatorio);
+                                dadosCliente.GerarComprovante(relatorio);
                             }
                             else
                             {
@@ -518,7 +522,7 @@ namespace PrototipoProjetoInterdisciplinar.View
                                 vagas.AtualizarInterfaceButtons();
                                 vaga9.BackColor = Color.Red;
                                 vaga9.Enabled = false;
-                                transacao.GerarComprovante(relatorio);
+                                dadosCliente.GerarComprovante(relatorio);
                             }
                             else
                             {
@@ -576,7 +580,7 @@ namespace PrototipoProjetoInterdisciplinar.View
                                 vagas.AtualizarInterfaceButtons();
                                 vaga10.BackColor = Color.Red;
                                 vaga10.Enabled = false;
-                                transacao.GerarComprovante(relatorio);
+                                dadosCliente.GerarComprovante(relatorio);
                             }
                             else
                             {
@@ -634,7 +638,7 @@ namespace PrototipoProjetoInterdisciplinar.View
                                 vagas.AtualizarInterfaceButtons();
                                 vaga11.BackColor = Color.Red;
                                 vaga11.Enabled = false;
-                                transacao.GerarComprovante(relatorio);
+                                dadosCliente.GerarComprovante(relatorio);
                             }
                             else
                             {
@@ -691,7 +695,7 @@ namespace PrototipoProjetoInterdisciplinar.View
                                 vagas.AtualizarInterfaceButtons();
                                 vaga12.BackColor = Color.Red;
                                 vaga12.Enabled = false;
-                                transacao.GerarComprovante(relatorio);
+                                dadosCliente.GerarComprovante(relatorio);
                             }
                             else
                             {
@@ -748,7 +752,7 @@ namespace PrototipoProjetoInterdisciplinar.View
                                 vagas.AtualizarInterfaceButtons();
                                 vaga13.BackColor = Color.Red;
                                 vaga13.Enabled = false;
-                                transacao.GerarComprovante(relatorio);
+                                dadosCliente.GerarComprovante(relatorio);
                             }
                             else
                             {
@@ -805,7 +809,7 @@ namespace PrototipoProjetoInterdisciplinar.View
                                 vagas.AtualizarInterfaceButtons();
                                 vaga14.BackColor = Color.Red;
                                 vaga14.Enabled = false;
-                                transacao.GerarComprovante(relatorio);
+                                dadosCliente.GerarComprovante(relatorio);
                             }
                             else
                             {
@@ -862,7 +866,7 @@ namespace PrototipoProjetoInterdisciplinar.View
                                 vagas.AtualizarInterfaceButtons();
                                 vaga15.BackColor = Color.Red;
                                 vaga15.Enabled = false;
-                                transacao.GerarComprovante(relatorio);
+                                dadosCliente.GerarComprovante(relatorio);
                             }
                             else
                             {
@@ -919,7 +923,7 @@ namespace PrototipoProjetoInterdisciplinar.View
                                 vagas.AtualizarInterfaceButtons();
                                 vaga16.BackColor = Color.Red;
                                 vaga16.Enabled = false;
-                                transacao.GerarComprovante(relatorio);
+                                dadosCliente.GerarComprovante(relatorio);
                             }
                             else
                             {
@@ -977,7 +981,7 @@ namespace PrototipoProjetoInterdisciplinar.View
                                 vagas.AtualizarInterfaceButtons();
                                 vaga17.BackColor = Color.Red;
                                 vaga17.Enabled = false;
-                                transacao.GerarComprovante(relatorio);
+                                dadosCliente.GerarComprovante(relatorio);
                             }
                             else
                             {
@@ -1034,7 +1038,7 @@ namespace PrototipoProjetoInterdisciplinar.View
                                 vagas.AtualizarInterfaceButtons();
                                 vaga18.BackColor = Color.Red;
                                 vaga18.Enabled = false;
-                                transacao.GerarComprovante(relatorio);
+                                dadosCliente.GerarComprovante(relatorio);
                             }
                             else
                             {
@@ -1091,7 +1095,7 @@ namespace PrototipoProjetoInterdisciplinar.View
                                 vagas.AtualizarInterfaceButtons();
                                 vaga19.BackColor = Color.Red;
                                 vaga19.Enabled = false;
-                                transacao.GerarComprovante(relatorio);
+                                dadosCliente.GerarComprovante(relatorio);
                             }
                             else
                             {
@@ -1148,7 +1152,7 @@ namespace PrototipoProjetoInterdisciplinar.View
                                 vagas.AtualizarInterfaceButtons();
                                 vaga20.BackColor = Color.Red;
                                 vaga20.Enabled = false;
-                                transacao.GerarComprovante(relatorio);
+                                dadosCliente.GerarComprovante(relatorio);
                             }
                             else
                             {

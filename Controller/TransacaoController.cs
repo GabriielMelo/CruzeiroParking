@@ -75,58 +75,6 @@ namespace PrototipoProjetoInterdisciplinar.Controller
             return cod_transacao;
         }
 
-        public void GerarComprovante(RelatorioModel relatorio)
-        {
-            string localComprovante = "";
-            string dlComprovante = Path.GetTempFileName();
-            FileInfo comprovante = new("ComprovanteReserva.xlsx");
-
-            if (comprovante.Exists)
-            {
-                comprovante.Delete();
-                comprovante = new FileInfo("ComprovanteReserva.xlsx");
-            }
-
-            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
-            ExcelPackage package = new(comprovante);
-            ExcelWorksheet worksheet = package.Workbook.Worksheets.Add("Comprovante");
-
-            worksheet.Cells["A1"].Value = "Comprovante de Reserva";
-            worksheet.Cells["A3"].Value = "Nome do Cliente:";
-            worksheet.Cells["C3"].Value = relatorio.Nome;
-            worksheet.Cells["A4"].Value = "Modelo do Carro:";
-            worksheet.Cells["C4"].Value = relatorio.ModeloCarro;
-            worksheet.Cells["A5"].Value = "Placa do Carro:";
-            worksheet.Cells["C5"].Value = relatorio.PlacaCarro;
-            worksheet.Cells["A6"].Value = "Data da reserva:";
-            worksheet.Cells["C6"].Value = relatorio.DataTransacao;
-            worksheet.Cells["A7"].Value = "Código da reserva:";
-            worksheet.Cells["C7"].Value = relatorio.Cod_transacao;
-
-            try
-            {
-                package.Save();
-                localComprovante = comprovante.FullName;
-                System.Diagnostics.Process.Start(localComprovante);
-            } catch(Exception ex)
-            {
-                MessageBox.Show("Erro ao abrir o arquivo" + ex.Message, ex.Message);
-                File.WriteAllBytes(dlComprovante, package.GetAsByteArray());
-                SaveFileDialog download = new();
-                download.Filter = "Arquivos Excel (*.xlsx)|*.xlsx";
-                download.FileName = "ComprovanteReserva.xlsx";
-                if(download.ShowDialog() == DialogResult.OK)
-                {
-                    string savePatch = download.FileName;
-                    File.Copy(dlComprovante, savePatch, true);
-                }
-                // File.Delete(download.FileName);
-            } finally
-            {
-
-            }
-            
-
-        }
+        
     }
 }

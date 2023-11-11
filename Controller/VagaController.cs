@@ -20,7 +20,7 @@ namespace PrototipoProjetoInterdisciplinar.Controller
             vagaModel = new VagaModel();
             vagaView = view; 
         }
-     
+        public VagaController() { }
        
         public void ConsultarVagasDisponiveis()
         {
@@ -74,8 +74,53 @@ namespace PrototipoProjetoInterdisciplinar.Controller
                 conn.FecharConexao(); 
             }
 
+        }
 
+        public int QuantidadeVagasDisponíveis()
+        {
+            int vagasDisponiveis = 0;
 
+            try
+            {
+                conn.Conectar();
+
+                string sql = "SELECT COUNT(*) FROM vagas WHERE disponivel = 1";
+                MySqlCommand command = new MySqlCommand(sql, conn.ObterConexao());
+                vagasDisponiveis = (int)(long)command.ExecuteScalar();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                conn.FecharConexao();
+            }
+
+            return vagasDisponiveis;
+        }
+
+        public void LiberarVaga(int id)
+        {
+            try
+            {
+                conn.Conectar();
+
+                string sql = "update  vagas set disponivel = true where id_vaga=@id";
+
+                MySqlCommand command = new(sql, conn.ObterConexao());
+
+                command.Parameters.AddWithValue("@id", id);
+                
+                command.ExecuteNonQuery();
+
+                MessageBox.Show("Vaga Liberada!","Atenção",MessageBoxButtons.OK,MessageBoxIcon.Information);
+
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Erro ao liberar a vaga",ex.Message);
+            } finally { conn.FecharConexao();}
         }
 
         public void AtualizarInterfaceButtons()

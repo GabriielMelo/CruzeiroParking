@@ -9,6 +9,7 @@ namespace PrototipoProjetoInterdisciplinar.Controller
     {
         private MySqlConnection? mConn;
         private DataSet? mDataSet;
+        private MySqlDataAdapter adapter;
         public void Conectar()
 
         {
@@ -30,18 +31,24 @@ namespace PrototipoProjetoInterdisciplinar.Controller
 
         }
 
-        public MySqlConnection ObterConexao()
+        public MySqlDataAdapter ObterAdapter(string query)
         {
-            return mConn;
+            adapter = new MySqlDataAdapter(query, mConn);
+            return adapter;
         }
 
-        public void FecharConexao()
-        {
-            if (mConn != null && mConn.State == ConnectionState.Open)
+        public MySqlConnection ObterConexao()
             {
-                mConn.Close();
+                return mConn;
             }
-        }
+
+            public void FecharConexao()
+            {
+                if (mConn != null && mConn.State == ConnectionState.Open)
+                {
+                    mConn.Close();
+                }
+            }
 
     }
 }

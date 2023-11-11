@@ -31,7 +31,7 @@
             vaga20 = new Button();
             vaga19 = new Button();
             panel1 = new Panel();
-            label4 = new Label();
+            txtVagasIndisponiveis = new Label();
             label3 = new Label();
             pictureBox2 = new PictureBox();
             label2 = new Label();
@@ -107,7 +107,7 @@
             // 
             // panel1
             // 
-            panel1.Controls.Add(label4);
+            panel1.Controls.Add(txtVagasIndisponiveis);
             panel1.Controls.Add(label3);
             panel1.Controls.Add(pictureBox2);
             panel1.Controls.Add(label2);
@@ -119,17 +119,17 @@
             panel1.Size = new Size(155, 82);
             panel1.TabIndex = 31;
             // 
-            // label4
+            // txtVagasIndisponiveis
             // 
-            label4.AutoSize = true;
-            label4.BackColor = Color.Gainsboro;
-            label4.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.ForeColor = Color.Black;
-            label4.Location = new Point(126, 46);
-            label4.Name = "label4";
-            label4.Size = new Size(18, 20);
-            label4.TabIndex = 34;
-            label4.Text = "0";
+            txtVagasIndisponiveis.AutoSize = true;
+            txtVagasIndisponiveis.BackColor = Color.Gainsboro;
+            txtVagasIndisponiveis.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
+            txtVagasIndisponiveis.ForeColor = Color.Black;
+            txtVagasIndisponiveis.Location = new Point(126, 46);
+            txtVagasIndisponiveis.Name = "txtVagasIndisponiveis";
+            txtVagasIndisponiveis.Size = new Size(18, 20);
+            txtVagasIndisponiveis.TabIndex = 34;
+            txtVagasIndisponiveis.Text = "0";
             // 
             // label3
             // 
@@ -636,7 +636,7 @@
         private PictureBox pictureBox2;
         private Panel panel1;
         private Label label2;
-        private Label label4;
+        private Label txtVagasIndisponiveis;
         private Label txtVagasDisponiveis;
         private Label label3;
         private SplitContainer splitContainer1;
