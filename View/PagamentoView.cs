@@ -28,32 +28,7 @@ namespace PrototipoProjetoInterdisciplinar.View
             DesativarCampos();
         }
 
-        private void cbModoBusca_SelectedIndexChanged(object sender, EventArgs e)
-        {
 
-            if (cbModoBusca.SelectedIndex == 0)
-            {
-                txtCodigoTransacao.Hide();
-                btnBuscarCod.Hide();
-                txtNome.Show();
-                lblTraco.Show();
-                btnBuscarNome.Show();
-            }
-            else if (cbModoBusca.SelectedIndex == 1)
-            {
-                lblTextoCod.Show();
-                btnBuscarNome.Hide();
-                txtNome.Hide();
-                txtCodigoTransacao.Show();
-                lblTraco.Show();
-                btnBuscarCod.Show();
-
-            }
-            else
-            {
-                DesativarCampos();
-            }
-        }
 
         private void cbPagamento_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -73,42 +48,6 @@ namespace PrototipoProjetoInterdisciplinar.View
             }
         }
 
-        private void btnBuscarNome_Click(object sender, EventArgs e)
-        {
-            if (txtNome.Text.Trim() == String.Empty)
-            {
-                MessageBox.Show("Campo Nome inválido", "Campo vazio", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            else
-            {
-                string nome = txtNome.Text.Trim();
-
-                ddCliente = rlControl.ObterDadosCliente_Nome(nome);
-                if (ddCliente != null)
-                {
-                    DialogResult result = MessageBox.Show("Deseja encerrar reserva de "+ ddCliente.Nome + " ?",
-                        "Cliente localizado", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (result == DialogResult.Yes)
-                    {
-                        cbPagamento.Enabled = true;
-                        valorTotal = pgcontrol.calcularValorReserva(ddCliente);
-                        lblValorTotal.Text = "R$" + valorTotal.ToString() + ",00";
-                    }
-                    else
-                    {
-                        return;
-                    }
-
-                }
-                else
-                {
-                    MessageBox.Show("Cliente não localizado", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-            }
-        }
 
         private void btnBuscarCod_Click(object sender, EventArgs e)
         {
@@ -179,7 +118,7 @@ namespace PrototipoProjetoInterdisciplinar.View
                     Limpar();
                     ddPagamento = pgControl.CadastrarTransacao(valorTotal, cartao, formaPagamento);
                     rlControl.ComprovanteTransacao(ddCliente, ddPagamento);
-                        
+
                 }
 
             }
@@ -247,35 +186,23 @@ namespace PrototipoProjetoInterdisciplinar.View
             txtVencimento.Clear();
             txtCod.Clear();
             txtBanco.Clear();
-            txtNome.Clear();
             txtCodigoTransacao.Clear();
         }
 
         public void AtivarCampos()
         {
-            btnPagar.Enabled = true;
-            txtBanco.Enabled = true;
-            txtCod.Enabled = true;
-            txtVencimento.Enabled = true;
-            txtCartao.Enabled = true;
-            cbPagamento.Enabled = true;
+
         }
         public void DesativarCampos()
         {
-            lblTextoCod.Hide();
-            txtCodigoTransacao.Hide();
-            txtNome.Hide();
-            lblTraco.Hide();
+            dgPagamento.Hide();
+            btnImprimir.Hide();
             btnPagar.Enabled = false;
-            btnBuscarNome.Hide();
-            btnBuscarCod.Hide();
             txtBanco.Enabled = false;
             txtCod.Enabled = false;
             txtVencimento.Enabled = false;
             txtCartao.Enabled = false;
             cbPagamento.Enabled = false;
-            cbModoBusca.SelectedIndex = 0;
-            cbPagamento.SelectedIndex = 0;
         }
 
 
