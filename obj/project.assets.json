@@ -2463,19 +2463,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\User\\.nuget\\packages\\": {}
+    "C:\\Users\\Gabriel Melo\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User\\Documents\\GitHub\\MeuPi3\\PrototipoProjetoInterdisciplinar.csproj",
-      "projectName": "PrototipoProjetoInterdisciplinar",
-      "projectPath": "C:\\Users\\User\\Documents\\GitHub\\MeuPi3\\PrototipoProjetoInterdisciplinar.csproj",
-      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\User\\Documents\\GitHub\\MeuPi3\\obj\\",
+      "projectUniqueName": "C:\\Users\\Gabriel Melo\\Documents\\GitHub\\CruzeiroParking\\CruzeiroParking.csproj",
+      "projectName": "CruzeiroParking",
+      "projectPath": "C:\\Users\\Gabriel Melo\\Documents\\GitHub\\CruzeiroParking\\CruzeiroParking.csproj",
+      "packagesPath": "C:\\Users\\Gabriel Melo\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Gabriel Melo\\Documents\\GitHub\\CruzeiroParking\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Gabriel Melo\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -2521,6 +2521,24 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[6.0.25, 6.0.25]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Host.win-x64",
+            "version": "[6.0.25, 6.0.25]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[6.0.25, 6.0.25]"
+          },
+          {
+            "name": "Microsoft.WindowsDesktop.App.Ref",
+            "version": "[6.0.25, 6.0.25]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
@@ -2529,7 +2547,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

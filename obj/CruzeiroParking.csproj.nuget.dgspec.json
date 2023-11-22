@@ -1,15 +1,15 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Gabriel Melo\\Documents\\GitHub\\CruzeiroParking\\PrototipoProjetoInterdisciplinar.csproj": {}
+    "C:\\Users\\Gabriel Melo\\Documents\\GitHub\\CruzeiroParking\\CruzeiroParking.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Gabriel Melo\\Documents\\GitHub\\CruzeiroParking\\PrototipoProjetoInterdisciplinar.csproj": {
+    "C:\\Users\\Gabriel Melo\\Documents\\GitHub\\CruzeiroParking\\CruzeiroParking.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Gabriel Melo\\Documents\\GitHub\\CruzeiroParking\\PrototipoProjetoInterdisciplinar.csproj",
-        "projectName": "PrototipoProjetoInterdisciplinar",
-        "projectPath": "C:\\Users\\Gabriel Melo\\Documents\\GitHub\\CruzeiroParking\\PrototipoProjetoInterdisciplinar.csproj",
+        "projectUniqueName": "C:\\Users\\Gabriel Melo\\Documents\\GitHub\\CruzeiroParking\\CruzeiroParking.csproj",
+        "projectName": "CruzeiroParking",
+        "projectPath": "C:\\Users\\Gabriel Melo\\Documents\\GitHub\\CruzeiroParking\\CruzeiroParking.csproj",
         "packagesPath": "C:\\Users\\Gabriel Melo\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\Gabriel Melo\\Documents\\GitHub\\CruzeiroParking\\obj\\",
         "projectStyle": "PackageReference",
