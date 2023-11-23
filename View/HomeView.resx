@@ -117,13 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="label3.Text" xml:space="preserve">
-    <value>Projeto Interdisciplinar III GRUPO 7. 3° SEMESTRE.
-                        
-Integrantes : 
-Gabriel de Jesus Melo                 RGM 31465196
-Marcela Penna Ferreira Neves   RGM: 31746101
-William Ribeiro dos Santos        RGM: 25007025
-Marcelo de Lima dos Santos      RGM: 32167423</value>
-  </data>
 </root>
